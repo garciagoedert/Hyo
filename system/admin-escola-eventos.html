@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Eventos - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+            <nav>
+                <a href="admin-escola-dashboard.html">Painel Principal</a>
+                <span>joao.silva@escola.com</span>
+                <a href="index.html" class="btn-logout">Sair</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <h1>Gerenciar Eventos</h1>
+            
+            <section class="card">
+                <h2>Criar Novo Evento</h2>
+                <form id="create-event-form">
+                    <!-- Informações Básicas -->
+                    <div class="input-group">
+                        <label for="event-name">Nome do Evento</label>
+                        <input type="text" id="event-name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="event-date">Data do Evento</label>
+                        <input type="date" id="event-date" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="event-type">Tipo de Evento</label>
+                        <select id="event-type" required>
+                            <option value="campeonato">Campeonato</option>
+                            <option value="exame_faixa">Exame de Faixa</option>
+                            <option value="seminario">Seminário</option>
+                        </select>
+                    </div>
+
+                    <!-- Categorias de Inscrição (Preços Base) -->
+                    <fieldset>
+                        <legend>Categorias de Inscrição (Preços Base)</legend>
+                        <div id="categorias-container">
+                            <!-- Exemplo de categoria -->
+                            <div class="form-row">
+                                <input type="text" placeholder="Nome da Categoria (ex: Infantil)">
+                                <input type="number" placeholder="Preço Base (R$)">
+                                <button type="button" class="btn btn-danger">Remover</button>
+                            </div>
+                        </div>
+                        <button type="button" id="add-categoria" class="btn btn-secondary">Adicionar Categoria</button>
+                    </fieldset>
+
+                    <!-- Modalidades Disponíveis (Preços Adicionais) -->
+                    <fieldset>
+                        <legend>Modalidades Disponíveis (Opcionais)</legend>
+                        <div id="modalidades-container">
+                            <!-- Exemplo de modalidade -->
+                            <div class="form-row">
+                                <input type="text" placeholder="Nome da Modalidade (ex: Luta)">
+                                <input type="number" placeholder="Preço Adicional (R$)">
+                                <button type="button" class="btn btn-danger">Remover</button>
+                            </div>
+                        </div>
+                        <button type="button" id="add-modalidade" class="btn btn-secondary">Adicionar Modalidade</button>
+                    </fieldset>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Salvar Evento</button>
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

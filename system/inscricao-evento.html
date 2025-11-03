@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição no Evento - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+            <nav>
+                <a href="aluno-dashboard.html">Meu Painel</a>
+                <a href="eventos.html">Voltar aos Eventos</a>
+                <span>aluno@email.com</span>
+                <a href="index.html" class="btn-logout">Sair</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <h1>Inscrição: Campeonato Estadual de Taekwondo</h1>
+            
+            <div class="inscricao-grid">
+                <!-- Coluna de Detalhes do Evento -->
+                <div class="card">
+                    <h2>Sobre o Evento</h2>
+                    <p><strong>Data:</strong> 25 de Dezembro de 2024</p>
+                    <p><strong>Local:</strong> Ginásio Municipal</p>
+                    <hr>
+                    <p>Um grande evento para competidores de todo o estado. Participe e mostre seu talento! Verifique as regras e prepare-se para um dia de muita competição e espírito marcial.</p>
+                </div>
+
+                <!-- Coluna do Formulário de Inscrição -->
+                <div class="card">
+                    <h2>Faça sua Inscrição</h2>
+                    <form id="inscricao-form">
+                        <!-- Seleção de Categoria Base -->
+                        <div class="input-group">
+                            <label for="categoria-base">1. Selecione sua Categoria</label>
+                            <select id="categoria-base" required>
+                                <option value="">Selecione...</option>
+                                <option value="80">Infantil - R$ 80,00</option>
+                                <option value="100">Adulto - R$ 100,00</option>
+                            </select>
+                        </div>
+
+                        <!-- Seleção de Modalidades Adicionais -->
+                        <div class="input-group">
+                            <label>2. Modalidades Adicionais (Opcional)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="modalidade" value="10"> Luta (+ R$ 10,00)</label>
+                                <label><input type="checkbox" name="modalidade" value="15"> Fórmula (+ R$ 15,00)</label>
+                                <label><input type="checkbox" name="modalidade" value="20"> Quebramento (+ R$ 20,00)</label>
+                            </div>
+                        </div>
+
+                        <!-- Total e Pagamento -->
+                        <div class="total-container">
+                            <p>Valor Total</p>
+                            <h3 id="valor-total">R$ 0,00</h3>
+                            <button type="submit" class="btn btn-primary">Ir para o Pagamento (Stripe)</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Lógica para calcular o valor total
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoriaBase = document.getElementById('categoria-base');
+            const modalidades = document.querySelectorAll('input[name="modalidade"]');
+            const valorTotalEl = document.getElementById('valor-total');
+
+            function calcularTotal() {
+                let total = 0;
+                const baseValue = parseFloat(categoriaBase.value) || 0;
+                total += baseValue;
+
+                modalidades.forEach(modalidade => {
+                    if (modalidade.checked) {
+                        total += parseFloat(modalidade.value);
+                    }
+                });
+
+                valorTotalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            }
+
+            categoriaBase.addEventListener('change', calcularTotal);
+            modalidades.forEach(modalidade => {
+                modalidade.addEventListener('change', calcularTotal);
+            });
+        });
+    </script>
+</body>
+</html>

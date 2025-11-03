@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin Escola - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+            <nav>
+                <span>joao.silva@escola.com</span>
+                <a href="index.html" class="btn-logout">Sair</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <h1>Painel do Administrador da Escola</h1>
+            <h2>Academia Tigre Branco</h2>
+
+            <section class="card">
+                <h2>Link de Cadastro para Alunos</h2>
+                <p>Compartilhe este link para que novos alunos possam se cadastrar diretamente na sua escola.</p>
+                <div class="input-group">
+                    <input type="text" id="registration-link" value="hyo.com/cadastro?escolaId=escola1" readonly>
+                    <button class="btn">Copiar Link</button>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Gerenciar Graduações</h2>
+                <button class="btn btn-primary">Adicionar Graduação</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ordem</th>
+                            <th>Nome da Faixa</th>
+                            <th>Cor</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1º GUB</td>
+                            <td>Ponta Amarela</td>
+                            <td style="background-color: #ffff00;"></td>
+                            <td>
+                                <button class="btn btn-secondary">Editar</button>
+                                <button class="btn btn-danger">Excluir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="card">
+                <h2>Adicionar Membros Manualmente</h2>
+                <div class="form-container">
+                    <!-- Formulário para criar instrutor -->
+                    <form id="create-instrutor-form">
+                        <h3>Criar Conta de Instrutor</h3>
+                        <div class="input-group">
+                            <label for="instrutor-email">Email do Instrutor</label>
+                            <input type="email" id="instrutor-email" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="instrutor-password">Senha Provisória</label>
+                            <input type="password" id="instrutor-password" required>
+                        </div>
+                        <button type="submit" class="btn">Criar Instrutor</button>
+                    </form>
+
+                    <!-- Formulário para criar aluno -->
+                    <form id="create-aluno-form">
+                        <h3>Criar Conta de Aluno</h3>
+                        <div class="input-group">
+                            <label for="aluno-email">Email do Aluno</label>
+                            <input type="email" id="aluno-email" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="aluno-password">Senha Provisória</label>
+                            <input type="password" id="aluno-password" required>
+                        </div>
+                        <button type="submit" class="btn">Criar Aluno</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+</body>
+</html>

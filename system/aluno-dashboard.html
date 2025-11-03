@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Aluno - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+            <nav>
+                <a href="eventos.html">Eventos Disponíveis</a>
+                <a href="rankings.html">Rankings</a>
+                <span>aluno@email.com</span>
+                <a href="index.html" class="btn-logout">Sair</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <h1>Meu Painel</h1>
+            
+            <div class="dashboard-grid">
+                <!-- Seção de Perfil -->
+                <section class="card">
+                    <h2>Meu Perfil</h2>
+                    <form id="profile-form">
+                        <div class="input-group">
+                            <label for="fullname">Nome Completo</label>
+                            <input type="text" id="fullname" value="Nome do Aluno Exemplo" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="birthdate">Data de Nascimento</label>
+                            <input type="date" id="birthdate" value="2000-01-01" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="profile-email">Email</label>
+                            <input type="email" id="profile-email" value="aluno@email.com" disabled>
+                        </div>
+                        <div class="input-group">
+                            <label for="escola">Escola</label>
+                            <input type="text" id="escola" value="Academia Tigre Branco" disabled>
+                        </div>
+                        <button type="submit" class="btn">Salvar Alterações</button>
+                    </form>
+                </section>
+
+                <!-- Seção de Histórico de Graduação -->
+                <section class="card">
+                    <h2>Histórico de Graduação</h2>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Faixa</th>
+                                    <th>Examinador</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Exemplo de linha -->
+                                <tr>
+                                    <td>2023-12-10</td>
+                                    <td>Ponta Amarela (1º GUB)</td>
+                                    <td>Mestre Kim</td>
+                                </tr>
+                                <!-- O histórico será preenchido aqui -->
+                                <tr>
+                                    <td colspan="3" style="text-align:center;">Nenhum histórico de graduação encontrado.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Seus Scripts -->
+    <script type="module" src="aluno.js"></script>
+</body>
+</html>

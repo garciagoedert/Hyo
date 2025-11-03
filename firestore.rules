@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Função auxiliar para obter os dados do usuário da coleção 'users'
+    function getUserData(userId) {
+      return get(/databases/$(database)/documents/users/$(userId)).data;
+    }
+
+    // Regras para a coleção de usuários (Coleção 1)
+    match /users/{userId} {
+      // Permite a criação se o usuário estiver criando seu próprio documento.
+      allow create: if request.auth.uid == userId;
+      // Permite a leitura se for o próprio usuário ou um admin-hyo.
+      allow read: if request.auth.uid == userId || getUserData(request.auth.uid).role == 'admin-hyo';
+      // Permite a atualização apenas se for o próprio usuário.
+      allow update: if request.auth.uid == userId;
+      // Nega a exclusão por padrão.
+      allow delete: if false;
+    }
+
+    // Regras para a coleção de perfis (criada no cadastro do aluno)
+    match /perfis/{userId} {
+        // Permite a criação se o usuário estiver criando seu próprio perfil.
+        allow create: if request.auth.uid == userId;
+        // Permite leitura e escrita apenas para o dono do perfil.
+        allow read, write: if request.auth.uid == userId;
+    }
+
+    // Regras para a coleção de escolas (Coleção 2)
+    match /escolas/{escolaId} {
+      // Permite que qualquer pessoa (autenticada ou não) leia a lista de escolas para o cadastro.
+      allow read: if true;
+      // Apenas um admin-hyo pode criar, atualizar e deletar escolas.
+      allow write: if getUserData(request.auth.uid).role == 'admin-hyo';
+    }
+
+    // Regras para a coleção de eventos (Coleção 4)
+    match /eventos/{eventoId} {
+      // Leitura pública para que alunos e visitantes vejam os eventos disponíveis.
+      allow read: if true;
+      // Apenas admins (Hyo ou de Escola) podem criar, editar e excluir eventos.
+      allow write: if getUserData(request.auth.uid).role == 'admin-hyo' || getUserData(request.auth.uid).role == 'admin-escola';
+    }
+
+    // A regra padrão de negar tudo continua valendo para as outras coleções.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

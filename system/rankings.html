@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rankings - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+            <nav>
+                <!-- A navegação pode ser diferente para usuários não logados -->
+                <a href="index.html">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <h1>Rankings Oficiais</h1>
+            
+            <div class="card">
+                <h2>Filtros</h2>
+                <form class="filters-form">
+                    <div class="input-group">
+                        <label for="ano">Ano</label>
+                        <select id="ano">
+                            <option>2025</option>
+                            <option>2024</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="torneio-tipo">Tipo de Torneio</label>
+                        <select id="torneio-tipo">
+                            <option>Todos</option>
+                            <option>Estadual</option>
+                            <option>Nacional</option>
+                        </select>
+                    </div>
+                     <div class="input-group">
+                        <label for="categoria-rank">Categoria</label>
+                        <select id="categoria-rank">
+                            <option>Todas</option>
+                            <option>Adulto Masculino</option>
+                            <option>Infantil Feminino</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Resultados</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pos.</th>
+                                <th>Atleta</th>
+                                <th>Escola</th>
+                                <th>Pontos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1º</td>
+                                <td>Nome do Aluno Campeão</td>
+                                <td>Academia Tigre Branco</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>2º</td>
+                                <td>Segundo Lugar Aluno</td>
+                                <td>Academia Dragão do Mar</td>
+                                <td>120</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

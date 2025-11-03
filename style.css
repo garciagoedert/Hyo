@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #fff;
+    color: #000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cabeçalho */
+header {
+    position: fixed; /* Mudei para fixed para que o header acompanhe o scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    z-index: 1001; /* Restaurado para garantir que o header fique visível */
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+header.scrolled {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+header.scrolled nav ul li a {
+    color: #000;
+}
+
+header.scrolled nav ul li a:hover,
+header.scrolled nav ul li.active a {
+    border-bottom: 2px solid #000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+}
+
+/* Navegação */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff; /* Cor do texto do menu para branco */
+    font-weight: 500;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+nav ul li a:hover,
+nav ul li.active a {
+    border-bottom: 2px solid #fff;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #eee;
+    list-style: none;
+    padding: 10px 0;
+    margin-top: 18px;
+    min-width: 160px;
+    z-index: 1000;
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    border: none !important;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f9f9f9;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+/* Conteúdo Principal */
+main {
+    /* O conteúdo principal começa abaixo do hero */
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay escuro com 50% de opacidade */
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.main-logo {
+    max-width: 300px;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw; /* 100/56.25 = 1.778 -> 16:9 Aspect Ratio */
+    min-height: 100vh;
+    min-width: 177.77vh; /* 100*16/9 = 177.77 */
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.hero-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Impede a interação com o vídeo */
+}
+
+/* Seção Sobre */
+.about {
+    padding: 80px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.about .container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.about-title h2 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.about-content p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 16px;
+    text-align: justify;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background-color: #333;
+}
+
+/* Overlay para o menu mobile */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1999; /* Abaixo do menu, acima do resto */
+}
+
+.menu-overlay.active {
+    display: block;
+}
+
+/* Estilos para o Menu Hamburger */
+.menu-toggle {
+    display: none; /* Escondido por padrão */
+    cursor: pointer;
+    z-index: 1002; /* Valor original restaurado */
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    nav > ul {
+        display: flex; /* Mantém flex para alinhar itens */
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -300px; /* Começa fora da tela */
+        width: 280px; /* Largura da barra lateral */
+        height: 100vh;
+        background-color: #fff; /* Fundo branco */
+        padding-top: 20px; /* Reduzido para dar mais espaço */
+        text-align: left;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 2000;
+        overflow-y: auto; /* Permite scroll se o menu for longo */
+    }
+
+    nav > ul.active {
+        right: 0; /* Entra na tela */
+    }
+
+    nav > ul > li {
+        margin: 0;
+        width: 100%;
+    }
+
+    nav > ul > li > a {
+        color: #000; /* Links em preto */
+        padding: 15px 20px;
+        display: block;
+        border-bottom: 1px solid #eee;
+    }
+
+    nav > ul > li > a:hover {
+        background-color: #f9f9f9;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Estilos do Submenu Mobile */
+    .dropdown .dropdown-menu {
+        position: static;
+        display: none; /* Escondido por padrão, aberto via JS */
+        background-color: #f9f9f9;
+        border: none;
+        box-shadow: none;
+        padding-left: 15px; /* Indentação */
+        margin-top: 0;
+    }
+
+    .dropdown .dropdown-menu a {
+        color: #333;
+        border-bottom: 1px solid #eee;
+    }
+
+
+    .menu-toggle {
+        display: block; /* Visível em telas menores */
+    }
+
+    header.scrolled .menu-toggle .bar {
+        background-color: #000;
+    }
+
+    .about .container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}

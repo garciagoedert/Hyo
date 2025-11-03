@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login do Ring - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="login-container">
+        <img src="../imgs/hyo-vertical-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+        <h2>Acesso do Ring</h2>
+        <form id="ring-login-form">
+            <div class="input-group">
+                <label for="event-select">Selecione o Evento</label>
+                <select id="event-select" required>
+                    <option value="">Selecione...</option>
+                    <option value="evento1">Campeonato Estadual</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="login-codigo">Código de Login</label>
+                <input type="text" id="login-codigo" name="login-codigo" required>
+            </div>
+            <div class="input-group">
+                <label for="senha-codigo">Código de Senha</label>
+                <input type="password" id="senha-codigo" name="senha-codigo" required>
+            </div>
+            <button type="submit" class="btn">Acessar Ring</button>
+        </form>
+    </div>
+</body>
+</html>

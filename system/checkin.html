@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-in do Evento - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+            <nav>
+                <span>Staff Check-in</span>
+                <a href="index.html" class="btn-logout">Sair</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <h1>Check-in: Campeonato Estadual</h1>
+            <div class="card">
+                <div class="input-group">
+                    <label for="search-inscrito">Buscar por Nome</label>
+                    <input type="text" id="search-inscrito" placeholder="Digite o nome do participante...">
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome do Participante</th>
+                                <th>Escola</th>
+                                <th>Status</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nome do Aluno Exemplo</td>
+                                <td>Academia Tigre Branco</td>
+                                <td><span class="status-pendente">Pendente</span></td>
+                                <td><button class="btn btn-primary">Confirmar Presença</button></td>
+                            </tr>
+                             <tr>
+                                <td>Outro Aluno Exemplo</td>
+                                <td>Academia Dragão do Mar</td>
+                                <td><span class="status-presente">Presente</span></td>
+                                <td><button class="btn btn-secondary" disabled>Confirmado</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

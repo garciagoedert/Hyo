@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup do Evento - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+            <nav>
+                <a href="admin-escola-dashboard.html">Painel Principal</a>
+                <span>joao.silva@escola.com</span>
+                <a href="index.html" class="btn-logout">Sair</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <h1>Setup do Evento: Campeonato Estadual</h1>
+            
+            <div class="tabs">
+                <button class="tab-link active" onclick="openTab(event, 'Sessoes')">Sessões</button>
+                <button class="tab-link" onclick="openTab(event, 'Rings')">Rings</button>
+                <button class="tab-link" onclick="openTab(event, 'Categorias')">Categorias de Competição</button>
+            </div>
+
+            <!-- Aba de Sessões -->
+            <div id="Sessoes" class="tab-content" style="display: block;">
+                <h2>Gerenciar Sessões (Horários)</h2>
+                <form>
+                    <input type="text" placeholder="Nome da Sessão (ex: Manhã - 8:00)">
+                    <button class="btn btn-primary">Adicionar Sessão</button>
+                </form>
+                <!-- Tabela de sessões existentes -->
+            </div>
+
+            <!-- Aba de Rings -->
+            <div id="Rings" class="tab-content">
+                <h2>Gerenciar Rings</h2>
+                <form>
+                    <input type="text" placeholder="Nome do Ring (ex: Ring 1)">
+                    <button class="btn btn-primary">Adicionar Ring (Gerar Códigos)</button>
+                </form>
+                <!-- Tabela de rings com códigos de login -->
+            </div>
+
+            <!-- Aba de Categorias de Competição -->
+            <div id="Categorias" class="tab-content">
+                <h2>Gerenciar Categorias de Competição</h2>
+                <form>
+                    <input type="text" placeholder="Nome da Categoria (ex: Adulto Masc - Formula)">
+                    <select><option>Selecione o Ring</option></select>
+                    <select><option>Selecione a Sessão</option></select>
+                    <select><option>Tipo de Disputa (Pontos/Vitória Simples)</option></select>
+                    <button class="btn btn-primary">Adicionar Categoria</button>
+                </form>
+                <!-- Tabela de categorias com botão para "Gerenciar" -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>

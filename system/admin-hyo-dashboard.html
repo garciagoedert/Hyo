@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin Hyo - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+            <nav>
+                <span>admin@hyo.com</span>
+                <a href="index.html" class="btn-logout">Sair</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <h1>Painel do Administrador Hyo</h1>
+            
+            <!-- Seção de Gerenciamento de Escolas -->
+            <section class="card">
+                <h2>Gerenciar Escolas</h2>
+                <button id="add-escola-btn" class="btn btn-primary">Adicionar Nova Escola</button>
+                <div class="table-responsive">
+                    <table id="escolas-table">
+                        <thead>
+                            <tr>
+                                <th>Nome da Escola</th>
+                                <th>Cidade</th>
+                                <th>Admin Responsável</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Exemplo de linha -->
+                            <tr>
+                                <td>Academia Tigre Branco</td>
+                                <td>São Paulo</td>
+                                <td>joao.silva@escola.com</td>
+                                <td>
+                                    <button class="btn btn-secondary">Editar</button>
+                                    <button class="btn btn-danger">Excluir</button>
+                                </td>
+                            </tr>
+                            <!-- Mais escolas serão adicionadas aqui dinamicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Seção para Criar Admin de Escola -->
+            <section class="card">
+                <h2>Criar Conta de Administrador de Escola</h2>
+                <form id="create-admin-escola-form">
+                    <div class="input-group">
+                        <label for="admin-email">Email do Admin</label>
+                        <input type="email" id="admin-email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="admin-password">Senha Provisória</label>
+                        <input type="password" id="admin-password" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="escola-assoc">Associar à Escola</label>
+                        <select id="escola-assoc" required>
+                            <option value="">Selecione uma escola</option>
+                            <!-- Escolas serão carregadas aqui dinamicamente -->
+                            <option value="escola1">Academia Tigre Branco</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Criar Administrador</button>
+                </form>
+            </section>
+
+            <!-- Seção de Gerenciamento de Campeonatos -->
+            <section class="card">
+                <h2>Gerenciar Campeonatos</h2>
+                <form id="create-championship-form">
+                    <div class="input-group">
+                        <label for="championship-name">Nome do Campeonato</label>
+                        <input type="text" id="championship-name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="championship-date">Data</label>
+                        <input type="date" id="championship-date" required>
+                    </div>
+                    <button type="submit" class="btn">Criar Campeonato</button>
+                </form>
+                <hr style="margin: 30px 0;">
+                <h3>Campeonatos Existentes</h3>
+                <div class="table-responsive">
+                    <table id="championships-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Data</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Campeonatos serão carregados aqui -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Seus Scripts -->
+    <script type="module" src="admin-hyo.js"></script>
+</body>
+</html>

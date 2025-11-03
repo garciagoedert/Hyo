@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Aluno - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="login-container" style="max-width: 600px;">
+        <img src="../imgs/hyo-vertical-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+        <h2>Cadastro de Novo Aluno</h2>
+        <form id="signup-form">
+            <!-- Dados Pessoais -->
+            <div class="input-group">
+                <label for="fullname">Nome Completo</label>
+                <input type="text" id="fullname" required>
+            </div>
+            <div class="input-group">
+                <label for="birthdate">Data de Nascimento</label>
+                <input type="date" id="birthdate" required>
+            </div>
+            
+            <!-- Dados de Contato -->
+            <div class="input-group">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" required>
+            </div>
+             <div class="input-group">
+                <label for="signup-password">Senha</label>
+                <input type="password" id="signup-password" required>
+            </div>
+
+            <!-- Seleção de Escola -->
+            <div class="input-group">
+                <label for="escola">Escola</label>
+                <select id="escola" required>
+                    <option value="">Selecione sua escola</option>
+                    <!-- Exemplo de escola carregada dinamicamente -->
+                    <option value="escola1">Academia Tigre Branco</option>
+                    <option value="escola2">Academia Dragão do Mar</option>
+                </select>
+                <!-- Este campo será usado se o ID da escola vier na URL -->
+                <input type="hidden" id="escolaId-hidden">
+            </div>
+
+            <button type="submit" class="btn">Cadastrar</button>
+            <p style="margin-top: 15px;">Já tem uma conta? <a href="index.html">Faça login</a></p>
+        </form>
+    </div>
+    
+    <!-- Adicionar script para lidar com o parâmetro da URL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const escolaId = urlParams.get('escolaId');
+            
+            if (escolaId) {
+                const escolaSelect = document.getElementById('escola');
+                const escolaHidden = document.getElementById('escolaId-hidden');
+                
+                // Simulação: Em um app real, você buscaria o nome da escola pelo ID
+                escolaSelect.innerHTML = `<option value="${escolaId}">Academia Tigre Branco (Pré-selecionada)</option>`;
+                escolaSelect.disabled = true;
+                escolaHidden.value = escolaId;
+            }
+        });
+    </script>
+
+    <!-- Seus Scripts -->
+    <script type="module" src="cadastro.js"></script>
+</body>
+</html>
