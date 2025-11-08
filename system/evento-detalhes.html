@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Evento - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+            <nav>
+                <span id="user-email"></span>
+                <a href="index.html" class="btn-logout">Sair</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <h1 id="evento-nome">Nome do Evento</h1>
+            <p id="evento-data">Data do Evento</p>
+
+            <div id="admin-view" style="display:none;">
+                <section class="card">
+                    <h2>Gerenciar Inscrições</h2>
+                    <!-- Tabela de inscritos -->
+                </section>
+                <section class="card">
+                    <h2>Gerenciar Rounds</h2>
+                    <form id="round-form">
+                        <div class="input-group">
+                            <label for="round-time">Horário do Round</label>
+                            <input type="time" id="round-time" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="round-category">Categoria</label>
+                            <input type="text" id="round-category" placeholder="Ex: Faixa Preta, Adulto, Masculino" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="round-alunos-search">Buscar Aluno</label>
+                            <input type="text" id="round-alunos-search" placeholder="Digite para buscar...">
+                            <label for="round-alunos">Selecionar Alunos</label>
+                            <select id="round-alunos" multiple required>
+                                <!-- Alunos inscritos serão carregados aqui -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Criar Round</button>
+                    </form>
+                    <div id="rounds-list" style="margin-top: 20px;">
+                        <!-- Lista de rounds criados -->
+                    </div>
+                </section>
+            </div>
+
+            <div id="aluno-view" style="display:none;">
+                <section class="card">
+                    <h2>Minha Inscrição</h2>
+                    <form id="inscricao-form">
+                        <div class="input-group">
+                            <label for="categoria">Selecione a Categoria</label>
+                            <select id="categoria" required>
+                                <option value="">Selecione...</option>
+                                <option value="formula">Fórmula</option>
+                                <option value="armas">Armas</option>
+                                <option value="sparring">Sparring</option>
+                                <option value="combat">Combat</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Inscrever-se e Pagar</button>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="evento-detalhes.js"></script>
+</body>
+</html>

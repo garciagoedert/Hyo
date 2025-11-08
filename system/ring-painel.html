@@ -10,67 +10,47 @@
 <body class="ring-body">
 
     <header class="ring-header">
-        <h1>Ring 1</h1>
-        <div class="session-info">Sessão: Manhã - Categoria: Adulto Masc - Formula</div>
+        <h1>Ring 1 - Round 1</h1>
+        <nav>
+            <a href="ring-login.html" class="btn-logout">Sair</a>
+        </nav>
     </header>
 
     <main class="ring-container">
-        <!-- Painel de Sparring (Luta) -->
-        <div id="sparring-panel" class="fight-panel">
-            <div class="competitor-side blue">
-                <h2>Competidor A</h2>
-                <div class="points">0</div>
-                <div class="actions">
-                    <button class="btn">+ Ponto</button>
-                    <button class="btn btn-secondary">+ Advertência</button>
-                </div>
-                <div class="adv-counter">Advertências: 0</div>
+        <div class="competition-spreadsheet">
+            <h2>Planilha de Competição</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ordem</th>
+                            <th>Competidor</th>
+                            <th>Escola</th>
+                            <th>Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>João da Silva</td>
+                            <td>Academia Tigre Branco</td>
+                            <td><button class="btn btn-primary">Registrar Vitória</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Carlos Pereira</td>
+                            <td>Academia Dragão do Mar</td>
+                            <td><button class="btn btn-primary">Registrar Vitória</button></td>
+                        </tr>
+                        <!-- Mais competidores -->
+                    </tbody>
+                </table>
             </div>
-
-            <div class="center-console">
-                <div class="timer">2:00</div>
-                <div class="timer-controls">
-                    <button class="btn">Iniciar</button>
-                    <button class="btn btn-secondary">Pausar</button>
-                </div>
-                <button class="btn btn-danger">Finalizar Luta</button>
-            </div>
-
-            <div class="competitor-side red">
-                <h2>Competidor B</h2>
-                <div class="points">0</div>
-                <div class="actions">
-                    <button class="btn">+ Ponto</button>
-                    <button class="btn btn-secondary">+ Advertência</button>
-                </div>
-                <div class="adv-counter">Advertências: 0</div>
-            </div>
-        </div>
-
-        <!-- Painel de Formula -->
-        <div id="formula-panel" class="formula-panel" style="display: none;">
-            <h2>Competidor Atual: Nome do Aluno</h2>
-            <form class="formula-form">
-                <div class="input-group">
-                    <label>Nota A</label>
-                    <input type="number" step="0.1" placeholder="9.0">
-                </div>
-                <div class="input-group">
-                    <label>Nota B</label>
-                    <input type="number" step="0.1" placeholder="9.0">
-                </div>
-                <div class="input-group">
-                    <label>Nota C</label>
-                    <input type="number" step="0.1" placeholder="9.0">
-                </div>
-                <button class="btn btn-primary">Salvar Nota</button>
-            </form>
-            <div class="final-score">Nota Final: <strong>-</strong></div>
         </div>
     </main>
 
     <footer class="ring-footer">
-        <button class="btn btn-danger">Finalizar Categoria</button>
+        <button class="btn btn-danger">Finalizar Round</button>
     </footer>
 
 </body>

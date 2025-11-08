@@ -44,13 +44,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Monitora o estado de autenticação do usuário
     onAuthStateChanged(auth, user => {
+        const path = window.location.pathname;
+        // Considera qualquer página que contenha 'dashboard' como protegida
+        const isProtectedPage = path.includes('dashboard');
+
         if (user) {
+            // Usuário está logado
             console.log('Usuário está logado:', user.uid);
-            if (!window.location.pathname.includes('dashboard')) {
-                 redirectUser(user.uid);
+            // Se estiver em uma página pública (que não seja de dashboard), redireciona para o dashboard correto
+            if (!isProtectedPage) {
+                redirectUser(user.uid);
             }
         } else {
+            // Usuário não está logado
             console.log('Nenhum usuário logado.');
+            // Se estiver em uma página protegida, redireciona para o login
+            if (isProtectedPage) {
+                window.location.href = 'index.html';
+            }
         }
     });
 
@@ -84,4 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
+
+    // Lógica de Logout
+    const logoutButtons = document.querySelectorAll('.btn-logout');
+    logoutButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            signOut(auth).catch((error) => {
+                console.error('Erro ao fazer logout:', error);
+            });
+        });
+    });
 });

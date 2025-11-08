@@ -14,7 +14,7 @@
             <nav>
                 <a href="eventos.html">Eventos Disponíveis</a>
                 <a href="rankings.html">Rankings</a>
-                <span>aluno@email.com</span>
+                <span id="user-email"></span>
                 <a href="index.html" class="btn-logout">Sair</a>
             </nav>
         </div>
@@ -25,9 +25,13 @@
             <h1>Meu Painel</h1>
             
             <div class="dashboard-grid">
-                <!-- Seção de Perfil -->
+                <!-- Seção de Dados Pessoais -->
                 <section class="card">
-                    <h2>Meu Perfil</h2>
+                    <h2>Meus Dados</h2>
+                    <div class="profile-header">
+                        <img src="https://via.placeholder.com/100" alt="Foto do Aluno" class="profile-pic">
+                        <button class="btn btn-secondary">Adicionar Foto</button>
+                    </div>
                     <form id="profile-form">
                         <div class="input-group">
                             <label for="fullname">Nome Completo</label>
@@ -49,28 +53,47 @@
                     </form>
                 </section>
 
-                <!-- Seção de Histórico de Graduação -->
+                <!-- Seção de Inscrições Ativas -->
                 <section class="card">
-                    <h2>Histórico de Graduação</h2>
+                    <h2>Inscrições Ativas</h2>
+                    <p>Você não está inscrito em nenhum evento no momento.</p>
+                    <a href="eventos.html" class="btn">Ver Eventos Disponíveis</a>
+                </section>
+
+                <!-- Seção de Graduação -->
+                <section class="card">
+                    <h2>Minha Graduação</h2>
+                    <div class="graduation-history">
+                        <p><strong>Faixa Atual:</strong> Ponta Amarela (1º GUB)</p>
+                        <p><strong>Próxima Graduação:</strong> 10/12/2023</p>
+                        <button class="btn btn-secondary">Ver Histórico Completo</button>
+                    </div>
+                </section>
+
+                <!-- Seção de Ranking -->
+                <section class="card">
+                    <h2>Ranking Hyo Atual</h2>
+                    <p>Sua posição no ranking é: <strong>15º lugar</strong></p>
+                    <a href="rankings.html" class="btn">Ver Ranking Completo</a>
+                </section>
+
+                <!-- Seção de Histórico de Eventos -->
+                <section class="card">
+                    <h2>Eventos que Participei</h2>
                     <div class="table-responsive">
-                        <table>
+                        <table id="eventos-participados-table">
                             <thead>
                                 <tr>
+                                    <th>Evento</th>
                                     <th>Data</th>
-                                    <th>Faixa</th>
-                                    <th>Examinador</th>
+                                    <th>Pontuação</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Exemplo de linha -->
                                 <tr>
-                                    <td>2023-12-10</td>
-                                    <td>Ponta Amarela (1º GUB)</td>
-                                    <td>Mestre Kim</td>
-                                </tr>
-                                <!-- O histórico será preenchido aqui -->
-                                <tr>
-                                    <td colspan="3" style="text-align:center;">Nenhum histórico de graduação encontrado.</td>
+                                    <td>Copa Hyo</td>
+                                    <td>20/05/2023</td>
+                                    <td>10 pontos</td>
                                 </tr>
                             </tbody>
                         </table>

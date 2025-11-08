@@ -23,72 +23,44 @@
             <h1>Painel do Administrador da Escola</h1>
             <h2>Academia Tigre Branco</h2>
 
+            <!-- Seção de Métricas da Escola -->
             <section class="card">
-                <h2>Link de Cadastro para Alunos</h2>
-                <p>Compartilhe este link para que novos alunos possam se cadastrar diretamente na sua escola.</p>
-                <div class="input-group">
-                    <input type="text" id="registration-link" value="hyo.com/cadastro?escolaId=escola1" readonly>
-                    <button class="btn">Copiar Link</button>
+                <h2>Métricas da Escola</h2>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <h3>Total de Alunos</h3>
+                        <p>50</p>
+                    </div>
+                    <div class="metric-item">
+                        <h3>Alunos Ativos</h3>
+                        <p>45</p>
+                    </div>
+                    <div class="metric-item">
+                        <h3>Professores</h3>
+                        <p>5</p>
+                    </div>
+                    <div class="metric-item">
+                        <h3>Próximo Evento</h3>
+                        <p>Copa Hyo - 20/10/2023</p>
+                    </div>
                 </div>
             </section>
 
+            <!-- Seção de Gerenciamento de Membros -->
             <section class="card">
-                <h2>Gerenciar Graduações</h2>
-                <button class="btn btn-primary">Adicionar Graduação</button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Ordem</th>
-                            <th>Nome da Faixa</th>
-                            <th>Cor</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1º GUB</td>
-                            <td>Ponta Amarela</td>
-                            <td style="background-color: #ffff00;"></td>
-                            <td>
-                                <button class="btn btn-secondary">Editar</button>
-                                <button class="btn btn-danger">Excluir</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h2>Gerenciar Membros</h2>
+                <div class="actions-container">
+                    <button id="add-professor-btn" class="btn btn-primary">Adicionar Professor</button>
+                    <button id="add-aluno-btn" class="btn btn-primary">Adicionar Aluno</button>
+                </div>
+                <p>Use os botões acima para adicionar novos professores e alunos à sua escola.</p>
             </section>
 
+            <!-- Seção de Gerenciamento de Eventos -->
             <section class="card">
-                <h2>Adicionar Membros Manualmente</h2>
-                <div class="form-container">
-                    <!-- Formulário para criar instrutor -->
-                    <form id="create-instrutor-form">
-                        <h3>Criar Conta de Instrutor</h3>
-                        <div class="input-group">
-                            <label for="instrutor-email">Email do Instrutor</label>
-                            <input type="email" id="instrutor-email" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="instrutor-password">Senha Provisória</label>
-                            <input type="password" id="instrutor-password" required>
-                        </div>
-                        <button type="submit" class="btn">Criar Instrutor</button>
-                    </form>
-
-                    <!-- Formulário para criar aluno -->
-                    <form id="create-aluno-form">
-                        <h3>Criar Conta de Aluno</h3>
-                        <div class="input-group">
-                            <label for="aluno-email">Email do Aluno</label>
-                            <input type="email" id="aluno-email" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="aluno-password">Senha Provisória</label>
-                            <input type="password" id="aluno-password" required>
-                        </div>
-                        <button type="submit" class="btn">Criar Aluno</button>
-                    </form>
-                </div>
+                <h2>Gerenciar Eventos</h2>
+                <button id="add-evento-btn" class="btn btn-primary">Adicionar Novo Evento</button>
+                <p>Crie e gerencie os eventos da sua escola, como campeonatos, graduações e seminários.</p>
             </section>
         </div>
     </main>

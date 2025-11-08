@@ -58,6 +58,13 @@ exports.createAdminEscola = functions.https.onCall(async (data, context) => {
       adminResponsavelId: newUserId,
     });
 
+    // 6. Registro da Atividade
+    await admin.firestore().collection("activities").add({
+        user: context.auth.token.email,
+        action: `criou o administrador ${email} para a escola ${escolaId}`,
+        timestamp: admin.firestore.FieldValue.serverTimestamp(),
+    });
+
     return {
       status: "success",
       message: `Administrador ${email} criado e associado à escola ${escolaId}.`,
@@ -71,4 +78,12 @@ exports.createAdminEscola = functions.https.onCall(async (data, context) => {
         error,
     );
   }
+});
+
+exports.onUserCreate = functions.auth.user().onCreate(async (user) => {
+    await admin.firestore().collection("activities").add({
+        user: user.email,
+        action: "se cadastrou no sistema",
+        timestamp: admin.firestore.FieldValue.serverTimestamp(),
+    });
 });

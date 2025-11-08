@@ -10,24 +10,17 @@
 <body>
     <div class="login-container">
         <img src="../imgs/hyo-vertical-logo.svg" alt="Hyo Taekwondo Association" class="logo">
-        <h2>Acesso do Ring</h2>
+        <h2>Login do Ring</h2>
         <form id="ring-login-form">
             <div class="input-group">
-                <label for="event-select">Selecione o Evento</label>
-                <select id="event-select" required>
-                    <option value="">Selecione...</option>
-                    <option value="evento1">Campeonato Estadual</option>
-                </select>
+                <label for="ring-user">Usuário do Ring</label>
+                <input type="text" id="ring-user" placeholder="Ex: ring1" required>
             </div>
             <div class="input-group">
-                <label for="login-codigo">Código de Login</label>
-                <input type="text" id="login-codigo" name="login-codigo" required>
+                <label for="ring-password">Senha</label>
+                <input type="password" id="ring-password" required>
             </div>
-            <div class="input-group">
-                <label for="senha-codigo">Código de Senha</label>
-                <input type="password" id="senha-codigo" name="senha-codigo" required>
-            </div>
-            <button type="submit" class="btn">Acessar Ring</button>
+            <button type="submit" class="btn">Entrar</button>
         </form>
     </div>
 </body>

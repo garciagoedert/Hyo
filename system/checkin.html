@@ -22,32 +22,44 @@
         <div class="container">
             <h1>Check-in: Campeonato Estadual</h1>
             <div class="card">
-                <div class="input-group">
-                    <label for="search-inscrito">Buscar por Nome</label>
-                    <input type="text" id="search-inscrito" placeholder="Digite o nome do participante...">
+                <div class="checkin-actions">
+                    <div class="input-group">
+                        <label for="search-inscrito">Buscar por Nome</label>
+                        <input type="text" id="search-inscrito" placeholder="Digite o nome do participante...">
+                    </div>
+                    <button id="add-inscrito-btn" class="btn btn-primary">Adicionar Inscrito de Última Hora</button>
                 </div>
                 <div class="table-responsive">
-                    <table>
+                    <table id="checkin-table">
                         <thead>
                             <tr>
                                 <th>Nome do Participante</th>
                                 <th>Escola</th>
+                                <th>Categoria</th>
                                 <th>Status</th>
-                                <th>Ação</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Nome do Aluno Exemplo</td>
                                 <td>Academia Tigre Branco</td>
+                                <td>Faixa Colorida - Adulto</td>
                                 <td><span class="status-pendente">Pendente</span></td>
-                                <td><button class="btn btn-primary">Confirmar Presença</button></td>
+                                <td class="actions-cell">
+                                    <button class="btn btn-primary">Confirmar</button>
+                                    <button class="btn btn-secondary">Alterar Categoria</button>
+                                </td>
                             </tr>
                              <tr>
                                 <td>Outro Aluno Exemplo</td>
                                 <td>Academia Dragão do Mar</td>
+                                <td>Faixa Preta - Master</td>
                                 <td><span class="status-presente">Presente</span></td>
-                                <td><button class="btn btn-secondary" disabled>Confirmado</button></td>
+                                <td class="actions-cell">
+                                    <button class="btn btn-secondary" disabled>Confirmado</button>
+                                    <button class="btn btn-secondary">Alterar Categoria</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

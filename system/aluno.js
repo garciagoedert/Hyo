@@ -1,5 +1,5 @@
 import { auth, db } from './firebase-config.js';
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 import { doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     onAuthStateChanged(auth, user => {
         if (user) {
             currentUser = user;
+            document.getElementById('user-email').textContent = user.email;
             const userRef = doc(db, 'users', user.uid);
             getDoc(userRef).then(docSnap => {
                 if (docSnap.exists() && docSnap.data().role === 'aluno') {
@@ -62,4 +63,19 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Ocorreu um erro ao atualizar seu perfil.");
         }
     });
+
+    // Lógica de Logout
+    const logoutButton = document.querySelector('.btn-logout');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            signOut(auth).then(() => {
+                console.log('Usuário deslogado com sucesso.');
+                window.location.href = 'index.html';
+            }).catch((error) => {
+                console.error('Erro ao fazer logout:', error);
+                alert('Erro ao tentar sair.');
+            });
+        });
+    }
 });

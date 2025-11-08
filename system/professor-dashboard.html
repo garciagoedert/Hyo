@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Professor - Hyo Taekwondo System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
+            <nav>
+                <span>professor@escola.com</span>
+                <a href="index.html" class="btn-logout">Sair</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <h1>Painel do Professor</h1>
+            <h2>Academia Tigre Branco</h2>
+
+            <section class="card">
+                <h2>Marcar Presença</h2>
+                <p>Selecione a turma e a data para registrar a presença dos alunos.</p>
+                <form id="attendance-form">
+                    <div class="input-group">
+                        <label for="turma">Turma</label>
+                        <select id="turma" required>
+                            <option value="">Selecione a turma</option>
+                            <option value="turma-a">Turma A (Seg/Qua/Sex - 18:00)</option>
+                            <option value="turma-b">Turma B (Ter/Qui - 19:00)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="aula-data">Data da Aula</label>
+                        <input type="date" id="aula-data" required>
+                    </div>
+                    <button type="submit" class="btn">Carregar Alunos</button>
+                </form>
+            </section>
+
+            <section class="card" id="alunos-list-section" style="display: none;">
+                <h2>Alunos da Turma</h2>
+                <div class="table-responsive">
+                    <table id="alunos-table">
+                        <thead>
+                            <tr>
+                                <th>Aluno</th>
+                                <th>Presença</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Alunos serão carregados aqui -->
+                        </tbody>
+                    </table>
+                </div>
+                <button id="save-attendance-btn" class="btn btn-primary">Salvar Presenças</button>
+            </section>
+        </div>
+    </main>
+
+    <!-- Seus Scripts -->
+    <script type="module" src="professor.js"></script>
+</body>
+</html>
