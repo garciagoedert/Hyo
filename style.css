@@ -217,6 +217,92 @@ main {
     background-color: #333;
 }
 
+/* Nova Seção Taekwondo */
+.tkd-section {
+    padding: 100px 0;
+    background-color: #fff;
+}
+
+.tkd-section .container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.tkd-content-left h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.tkd-logo {
+    max-width: 150px;
+}
+
+.tkd-content-right p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.tkd-content-right p:last-child {
+    margin-bottom: 0;
+}
+
+/* Seção Programas (Grid Simples) */
+.programs-grid-section {
+    background-color: #fff;
+    padding: 80px 0;
+}
+
+.section-title-alt {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title-alt h2 {
+    font-size: 2.5rem;
+    color: #000;
+    font-weight: 400;
+}
+
+.section-title-alt h2 strong {
+    font-weight: 700;
+}
+
+.programs-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.program-grid-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.program-grid-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.program-grid-card img {
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.program-grid-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.program-grid-card p {
+    color: #666;
+}
+
 /* Overlay para o menu mobile */
 .menu-overlay {
     display: none;
@@ -316,5 +402,21 @@ main {
     .about .container {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    .tkd-section .container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .tkd-content-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .programs-grid-container {
+        grid-template-columns: 1fr 1fr;
     }
 }
