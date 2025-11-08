@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-import { collection, onSnapshot, doc, getDoc, deleteDoc, addDoc, query, where, getDocs, updateDoc } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+import { collection, onSnapshot, doc, getDoc, deleteDoc, addDoc, query, where, getDocs, updateDoc, orderBy, limit } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 // Importe a função httpsCallable para chamar a Cloud Function
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-functions.js";
 
@@ -67,18 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadActivityFeed() {
         const feedList = document.getElementById('activity-feed-list');
-        // Simulação de dados
-        const activities = [
-            { user: 'admin@hyo.com', action: 'criou a escola "Tigres Brancos"', time: 'há 2 minutos' },
-            { user: 'aluno1@teste.com', action: 'se cadastrou no sistema', time: 'há 15 minutos' },
-            { user: 'admin.escola@teste.com', action: 'adicionou um novo evento', time: 'há 1 hora' }
-        ];
+        const activitiesCollection = collection(db, 'activities');
+        const q = query(activitiesCollection, orderBy('timestamp', 'desc'), limit(10));
 
-        feedList.innerHTML = '';
-        activities.forEach(activity => {
-            const item = document.createElement('li');
-            item.innerHTML = `<strong>${activity.user}</strong> ${activity.action} - <em>${activity.time}</em>`;
-            feedList.appendChild(item);
+        onSnapshot(q, (snapshot) => {
+            feedList.innerHTML = '';
+            if (snapshot.empty) {
+                feedList.innerHTML = '<li>Nenhuma atividade recente.</li>';
+                return;
+            }
+            snapshot.forEach(doc => {
+                const activity = doc.data();
+                const item = document.createElement('li');
+                const time = activity.timestamp ? activity.timestamp.toDate().toLocaleString('pt-BR') : 'agora';
+                item.innerHTML = `<strong>${activity.user}</strong> ${activity.action} - <em>${time}</em>`;
+                feedList.appendChild(item);
+            });
         });
     }
     loadActivityFeed();

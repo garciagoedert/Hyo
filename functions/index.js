@@ -1,7 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-
-admin.initializeApp();
+admin.initializeApp(functions.config().firebase);
 
 /**
  * Cloud Function para criar um novo usuário com o papel 'admin-escola'.

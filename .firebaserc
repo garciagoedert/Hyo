@@ -1,7 +1,5 @@
 {
   "projects": {
-    "hyo": "hyoassociation"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "hyo-sys"
+  }
 }
