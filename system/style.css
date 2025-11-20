@@ -57,7 +57,7 @@ body {
     color: #000;
 }
 
-.btn-logout {
+.dashboard-header nav a.btn-logout {
     background-color: #d9534f;
     color: white;
     padding: 8px 15px;
@@ -67,7 +67,7 @@ body {
     font-weight: 500;
 }
 
-.btn-logout:hover {
+.dashboard-header nav a.btn-logout:hover {
     background-color: #c9302c;
     color: white;
 }
@@ -315,4 +315,71 @@ table tr:hover {
 
 #activity-feed-list li:last-child {
     border-bottom: none;
+}
+
+/* Estilos da Página de Login */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-container .logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.login-container h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 600;
+}
+
+.login-container .input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.login-container .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.login-container .input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.login-container .input-group input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.login-container .btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container .btn:hover {
+    background-color: #0056b3;
 }

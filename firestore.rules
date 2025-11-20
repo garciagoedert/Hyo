@@ -6,12 +6,18 @@ service cloud.firestore {
       return get(/databases/$(database)/documents/users/$(userId)).data;
     }
 
+    // Função para verificar se um usuário é admin-hyo de forma segura
+    function isHyoAdmin(userId) {
+      return exists(/databases/$(database)/documents/users/$(userId)) &&
+             get(/databases/$(database)/documents/users/$(userId)).data.role == 'admin-hyo';
+    }
+
     // Regras para a coleção de usuários (Coleção 1)
     match /users/{userId} {
       // Permite a criação se o usuário estiver criando seu próprio documento.
       allow create: if request.auth.uid == userId;
       // Permite a leitura se for o próprio usuário ou um admin-hyo.
-      allow read: if request.auth.uid == userId || getUserData(request.auth.uid).role == 'admin-hyo';
+      allow read: if request.auth.uid == userId || isHyoAdmin(request.auth.uid);
       // Permite a atualização apenas se for o próprio usuário.
       allow update: if request.auth.uid == userId;
       // Nega a exclusão por padrão.
@@ -31,7 +37,7 @@ service cloud.firestore {
       // Permite que qualquer pessoa (autenticada ou não) leia a lista de escolas para o cadastro.
       allow read: if true;
       // Apenas um admin-hyo pode criar, atualizar e deletar escolas.
-      allow write: if getUserData(request.auth.uid).role == 'admin-hyo';
+      allow write: if isHyoAdmin(request.auth.uid);
     }
 
     // Regras para a coleção de eventos (Coleção 4)
@@ -39,7 +45,23 @@ service cloud.firestore {
       // Leitura pública para que alunos e visitantes vejam os eventos disponíveis.
       allow read: if true;
       // Apenas admins (Hyo ou de Escola) podem criar, editar e excluir eventos.
-      allow write: if getUserData(request.auth.uid).role == 'admin-hyo' || getUserData(request.auth.uid).role == 'admin-escola';
+      allow write: if isHyoAdmin(request.auth.uid) || getUserData(request.auth.uid).role == 'admin-escola';
+    }
+
+    // Regras para a coleção de feed de atividades (Coleção 5)
+    match /activities/{activityId} {
+      // Apenas admin-hyo pode ler o feed de atividades.
+      allow read: if isHyoAdmin(request.auth.uid);
+      // Ninguém pode escrever diretamente, isso deve ser feito por Cloud Functions.
+      allow write: if false;
+    }
+
+    // Regras para a coleção de currículo mestre (Coleção 6)
+    match /curriculo/{faixa} {
+      // Apenas admin-hyo pode criar e atualizar o currículo.
+      allow write: if isHyoAdmin(request.auth.uid);
+      // Todos os usuários autenticados podem ler o currículo.
+      allow read: if request.auth != null;
     }
 
     // A regra padrão de negar tudo continua valendo para as outras coleções.

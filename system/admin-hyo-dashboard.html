@@ -26,6 +26,7 @@
                     <li><a href="#gerenciar-escolas">Gerenciar Escolas</a></li>
                     <li><a href="#criar-admin">Criar Admin de Escola</a></li>
                     <li><a href="#gerenciar-campeonatos">Gerenciar Campeonatos</a></li>
+                    <li><a href="#curriculo-mestre">Currículo</a></li>
                     <li><a href="#ranking">Ranking</a></li>
                 </ul>
             </nav>
@@ -137,6 +138,28 @@
                                 <!-- Conteúdo preenchido por JS -->
                             </tbody>
                         </table>
+                    </div>
+                </section>
+
+                <section class="card" id="curriculo-mestre" style="display:none;">
+                    <h2>Gestão de Currículo</h2>
+                    <div class="input-group">
+                        <label for="faixa-select">Selecione a Faixa para Editar</label>
+                        <select id="faixa-select">
+                            <!-- Opções de faixa carregadas via JS -->
+                        </select>
+                    </div>
+                    <div id="curriculo-editor">
+                        <h3>Técnicas para a Faixa Selecionada</h3>
+                        <div id="tecnicas-list">
+                            <!-- Lista de técnicas carregada aqui -->
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="nova-tecnica-input" placeholder="Nome da nova técnica">
+                            <button id="add-tecnica-btn" class="btn">Adicionar Técnica</button>
+                        </div>
+                        <hr>
+                        <button id="salvar-curriculo-btn" class="btn btn-primary">Salvar Alterações no Currículo</button>
                     </div>
                 </section>
 

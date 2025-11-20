@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-import { collection, onSnapshot, doc, getDoc, deleteDoc, addDoc, query, where, getDocs, updateDoc, orderBy, limit } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+import { collection, onSnapshot, doc, getDoc, deleteDoc, addDoc, query, where, getDocs, updateDoc, orderBy, limit, setDoc } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 // Importe a função httpsCallable para chamar a Cloud Function
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-functions.js";
 
@@ -17,6 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const editChampionshipModal = document.getElementById('edit-championship-modal');
     const editChampionshipForm = document.getElementById('edit-championship-form');
     const contentSections = document.querySelectorAll('.dashboard-main-content .card');
+    // Elementos do Currículo
+    const faixaSelect = document.getElementById('faixa-select');
+    const tecnicasList = document.getElementById('tecnicas-list');
+    const novaTecnicaInput = document.getElementById('nova-tecnica-input');
+    const addTecnicaBtn = document.getElementById('add-tecnica-btn');
+    const salvarCurriculoBtn = document.getElementById('salvar-curriculo-btn');
+
+    let curriculoData = {}; // Para manter os dados do currículo em memória
+    let faixas = ["branca", "ponta-amarela", "amarela", "ponta-verde", "verde", "ponta-azul", "azul", "ponta-vermelha", "vermelha", "ponta-preta", "preta"];
+
 
     const urlParams = new URLSearchParams(window.location.search);
     const isTestMode = urlParams.get('testmode') === 'true';
@@ -37,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     loadEscolas();
                     loadChampionships();
                     loadMetrics();
+                    initCurriculo();
                 } else {
                         console.log("Usuário não é Admin Hyo. Redirecionando...");
                         window.location.href = 'index.html';
@@ -430,4 +441,86 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- LÓGICA DO CURRÍCULO MESTRE ---
+
+    async function initCurriculo() {
+        // Popula o select com as faixas
+        faixas.forEach(faixa => {
+            const option = new Option(faixa.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()), faixa);
+            faixaSelect.add(option);
+        });
+
+        await loadCurriculoData();
+        renderCurriculoEditor(faixaSelect.value);
+
+        faixaSelect.addEventListener('change', (e) => {
+            renderCurriculoEditor(e.target.value);
+        });
+
+        addTecnicaBtn.addEventListener('click', () => {
+            const novaTecnica = novaTecnicaInput.value.trim();
+            if (novaTecnica) {
+                const faixaAtual = faixaSelect.value;
+                if (!curriculoData[faixaAtual]) {
+                    curriculoData[faixaAtual] = { tecnicas: [] };
+                }
+                curriculoData[faixaAtual].tecnicas.push(novaTecnica);
+                renderCurriculoEditor(faixaAtual);
+                novaTecnicaInput.value = '';
+            }
+        });
+
+        salvarCurriculoBtn.addEventListener('click', async () => {
+            const faixaAtual = faixaSelect.value;
+            if (curriculoData[faixaAtual]) {
+                const docRef = doc(db, 'curriculo', faixaAtual);
+                try {
+                    // Usar setDoc com merge para criar ou atualizar o documento
+                    await setDoc(docRef, curriculoData[faixaAtual], { merge: true });
+                    alert(`Currículo da faixa ${faixaAtual} salvo com sucesso!`);
+                } catch (error) {
+                    console.error("Erro ao salvar currículo: ", error);
+                    alert("Erro ao salvar o currículo.");
+                }
+            }
+        });
+    }
+
+    async function loadCurriculoData() {
+        const curriculoCollection = collection(db, 'curriculo');
+        const snapshot = await getDocs(curriculoCollection);
+        snapshot.forEach(doc => {
+            curriculoData[doc.id] = doc.data();
+        });
+    }
+
+    function renderCurriculoEditor(faixa) {
+        tecnicasList.innerHTML = '';
+        const data = curriculoData[faixa];
+        if (data && data.tecnicas) {
+            data.tecnicas.forEach((tecnica, index) => {
+                const item = document.createElement('div');
+                item.className = 'tecnica-item';
+                item.innerHTML = `
+                    <span>${tecnica}</span>
+                    <button class="btn btn-danger btn-sm" data-index="${index}">Remover</button>
+                `;
+                tecnicasList.appendChild(item);
+            });
+        } else {
+            tecnicasList.innerHTML = '<p>Nenhuma técnica cadastrada para esta faixa.</p>';
+        }
+    }
+
+    tecnicasList.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-danger')) {
+            const index = parseInt(e.target.dataset.index, 10);
+            const faixaAtual = faixaSelect.value;
+            if (curriculoData[faixaAtual] && curriculoData[faixaAtual].tecnicas) {
+                curriculoData[faixaAtual].tecnicas.splice(index, 1);
+                renderCurriculoEditor(faixaAtual);
+            }
+        }
+    });
 });

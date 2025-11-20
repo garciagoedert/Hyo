@@ -24,9 +24,9 @@
             <h2>Academia Tigre Branco</h2>
 
             <section class="card">
-                <h2>Marcar Presença</h2>
-                <p>Selecione a turma e a data para registrar a presença dos alunos.</p>
-                <form id="attendance-form">
+                <h2>Gestão de Turma</h2>
+                <p>Selecione a turma para registrar presenças e avaliar o progresso dos alunos.</p>
+                <form id="turma-form">
                     <div class="input-group">
                         <label for="turma">Turma</label>
                         <select id="turma" required>
@@ -51,6 +51,7 @@
                             <tr>
                                 <th>Aluno</th>
                                 <th>Presença</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,6 +63,19 @@
             </section>
         </div>
     </main>
+
+    <!-- Modal de Avaliação de Progresso -->
+    <div id="avaliacao-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Avaliar Progresso de <span id="aluno-nome-modal"></span></h2>
+            <p><strong>Faixa Atual:</strong> <span id="aluno-faixa-modal"></span></p>
+            <div id="aluno-curriculo-modal">
+                <!-- Conteúdo do currículo do aluno carregado aqui -->
+            </div>
+            <button id="salvar-avaliacao-btn" class="btn btn-primary">Salvar Avaliação</button>
+        </div>
+    </div>
 
     <!-- Seus Scripts -->
     <script type="module" src="professor.js"></script>
