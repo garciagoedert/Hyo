@@ -1,69 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin Escola - Hyo Taekwondo System</title>
+    <title>Dashboard Admin Escola - Hyo Taekwondo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
 </head>
-<body>
-    <header class="dashboard-header">
-        <div class="container">
-            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
-            <nav>
-                <span>joao.silva@escola.com</span>
-                <a href="index.html" class="btn-logout">Sair</a>
-            </nav>
+<p style="color: var(--color-text-secondary); margin-top: var(--spacing-xs);">Academia Tigre Branco
+</p>
+</header>
+
+<!-- Metrics Grid -->
+<div class="metrics-grid">
+    <div class="metric-item">
+        <h3>Total de Alunos</h3>
+        <p>50</p>
+    </div>
+    <div class="metric-item">
+        <h3>Alunos Ativos</h3>
+        <p>45</p>
+    </div>
+    <div class="metric-item">
+        <h3>Professores</h3>
+        <p>5</p>
+    </div>
+    <div class="metric-item">
+        <h3>Próximo Evento</h3>
+        <p style="font-size: 1.25rem;">Copa Hyo - 20/10</p>
+    </div>
+</div>
+
+<div class="dashboard-grid-v2" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg);">
+    <!-- Management Section -->
+    <section class="card">
+        <h2>Gerenciar Membros</h2>
+        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg);">Adicione novos
+            membros à sua equipe e corpo discente.</p>
+        <div class="actions-container" style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+            <button id="add-professor-btn" class="btn btn-primary">Adicionar Professor</button>
+            <button id="add-aluno-btn" class="btn btn-secondary">Adicionar Aluno</button>
         </div>
-    </header>
+    </section>
 
-    <main class="dashboard-container">
-        <div class="container">
-            <h1>Painel do Administrador da Escola</h1>
-            <h2>Academia Tigre Branco</h2>
+    <!-- Events Section -->
+    <section class="card">
+        <h2>Gerenciar Eventos</h2>
+        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg);">Organize
+            campeonatos, graduações e seminários.</p>
+        <button id="add-evento-btn" class="btn btn-primary">Adicionar Novo Evento</button>
+    </section>
+</div>
+</div>
+</main>
+</div>
 
-            <!-- Seção de Métricas da Escola -->
-            <section class="card">
-                <h2>Métricas da Escola</h2>
-                <div class="metrics-grid">
-                    <div class="metric-item">
-                        <h3>Total de Alunos</h3>
-                        <p>50</p>
-                    </div>
-                    <div class="metric-item">
-                        <h3>Alunos Ativos</h3>
-                        <p>45</p>
-                    </div>
-                    <div class="metric-item">
-                        <h3>Professores</h3>
-                        <p>5</p>
-                    </div>
-                    <div class="metric-item">
-                        <h3>Próximo Evento</h3>
-                        <p>Copa Hyo - 20/10/2023</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Seção de Gerenciamento de Membros -->
-            <section class="card">
-                <h2>Gerenciar Membros</h2>
-                <div class="actions-container">
-                    <button id="add-professor-btn" class="btn btn-primary">Adicionar Professor</button>
-                    <button id="add-aluno-btn" class="btn btn-primary">Adicionar Aluno</button>
-                </div>
-                <p>Use os botões acima para adicionar novos professores e alunos à sua escola.</p>
-            </section>
-
-            <!-- Seção de Gerenciamento de Eventos -->
-            <section class="card">
-                <h2>Gerenciar Eventos</h2>
-                <button id="add-evento-btn" class="btn btn-primary">Adicionar Novo Evento</button>
-                <p>Crie e gerencie os eventos da sua escola, como campeonatos, graduações e seminários.</p>
-            </section>
-        </div>
-    </main>
-
+<script src="dashboard.js"></script>
 </body>
+
 </html>

@@ -1,83 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel do Professor - Hyo Taekwondo System</title>
+    <title>Dashboard do Professor - Hyo Taekwondo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
 </head>
+
 <body>
-    <header class="dashboard-header">
-        <div class="container">
-            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
-            <nav>
-                <span>professor@escola.com</span>
-                <a href="index.html" class="btn-logout">Sair</a>
-            </nav>
-        </div>
+    <!-- Mobile Menu Toggle -->
+    <button id="sidebar-toggle" class="mobile-menu-toggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <header style="margin-bottom: var(--spacing-xl);">
+        <h1 style="font-size: 1.875rem; font-weight: 700; color: var(--color-primary); margin: 0;">Painel do
+            Professor</h1>
+        <p style="color: var(--color-text-secondary); margin-top: var(--spacing-xs);">Gerenciamento de Aulas
+            e Presença</p>
     </header>
 
-    <main class="dashboard-container">
-        <div class="container">
-            <h1>Painel do Professor</h1>
-            <h2>Academia Tigre Branco</h2>
-
-            <section class="card">
-                <h2>Gestão de Turma</h2>
-                <p>Selecione a turma para registrar presenças e avaliar o progresso dos alunos.</p>
-                <form id="turma-form">
-                    <div class="input-group">
-                        <label for="turma">Turma</label>
-                        <select id="turma" required>
-                            <option value="">Selecione a turma</option>
-                            <option value="turma-a">Turma A (Seg/Qua/Sex - 18:00)</option>
-                            <option value="turma-b">Turma B (Ter/Qui - 19:00)</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="aula-data">Data da Aula</label>
-                        <input type="date" id="aula-data" required>
-                    </div>
-                    <button type="submit" class="btn">Carregar Alunos</button>
-                </form>
-            </section>
-
-            <section class="card" id="alunos-list-section" style="display: none;">
-                <h2>Alunos da Turma</h2>
-                <div class="table-responsive">
-                    <table id="alunos-table">
-                        <thead>
-                            <tr>
-                                <th>Aluno</th>
-                                <th>Presença</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Alunos serão carregados aqui -->
-                        </tbody>
-                    </table>
-                </div>
-                <button id="save-attendance-btn" class="btn btn-primary">Salvar Presenças</button>
-            </section>
+    <div class="dashboard-grid-v2" style="display: grid; grid-template-columns: 1fr; gap: var(--spacing-lg);">
+        <div class="input-group" style="margin-bottom: 0;">
+            <label for="aula-data">Data da Aula</label>
+            <input type="date" id="aula-data" required>
         </div>
+        <button type="submit" class="btn btn-primary" style="height: 42px;">Carregar Alunos</button>
+        </form>
+        </section>
+
+        <!-- Students List Section -->
+        <section class="card" id="alunos-list-section" style="display: none;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg); border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-sm);">
+                <h2 style="border: none; margin: 0; padding: 0;">Alunos da Turma</h2>
+                <button id="save-attendance-btn" class="btn btn-primary">Salvar Presenças</button>
+            </div>
+
+            <div class="table-responsive">
+                <table id="alunos-table">
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Presença</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Alunos serão carregados aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    </div>
     </main>
+    </div>
 
     <!-- Modal de Avaliação de Progresso -->
     <div id="avaliacao-modal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Avaliar Progresso de <span id="aluno-nome-modal"></span></h2>
-            <p><strong>Faixa Atual:</strong> <span id="aluno-faixa-modal"></span></p>
-            <div id="aluno-curriculo-modal">
+            <p style="margin-bottom: var(--spacing-md);"><strong>Faixa Atual:</strong> <span
+                    id="aluno-faixa-modal"></span></p>
+            <div id="aluno-curriculo-modal" style="margin-bottom: var(--spacing-lg);">
                 <!-- Conteúdo do currículo do aluno carregado aqui -->
             </div>
-            <button id="salvar-avaliacao-btn" class="btn btn-primary">Salvar Avaliação</button>
+            <button id="salvar-avaliacao-btn" class="btn btn-primary" style="width: 100%;">Salvar Avaliação</button>
         </div>
     </div>
 
-    <!-- Seus Scripts -->
+    <!-- Scripts -->
     <script type="module" src="professor.js"></script>
+    <script src="dashboard.js"></script>
 </body>
+
 </html>

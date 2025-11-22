@@ -1,83 +1,105 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel do Aluno - Hyo Taekwondo System</title>
+    <title>Dashboard do Aluno - Hyo Taekwondo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
 </head>
+
 <body>
-    <header class="dashboard-header">
-        <div class="container">
-            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
-            <nav>
-                <a href="eventos.html">Eventos Disponíveis</a>
-                <a href="rankings.html">Rankings</a>
-                <span id="user-email"></span>
-                <a href="index.html" class="btn-logout">Sair</a>
-            </nav>
+    <!-- Mobile Menu Toggle -->
+    <button id="sidebar-toggle" class="mobile-menu-toggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <!-- Header Section -->
+    <header
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+        <div>
+            <h1 style="font-size: 1.875rem; font-weight: 700; color: var(--color-primary); margin: 0;">Olá,
+                <span id="display-fullname">Aluno</span>
+            </h1>
+            <p style="color: var(--color-text-secondary); margin-top: var(--spacing-xs);">Bem-vindo de volta
+                ao dojo digital.</p>
+        </div>
+        <div class="profile-header" style="margin: 0;">
+            <img src="https://via.placeholder.com/100" alt="Foto do Aluno" class="profile-pic" id="profile-pic-display"
+                style="width: 48px; height: 48px; border-width: 2px;">
         </div>
     </header>
 
-    <main class="dashboard-container">
-        <div class="container">
-            <h1>Meu Painel</h1>
-            
-            <div class="dashboard-grid-v2">
-                <div class="main-column">
-                    <!-- Seção da Jornada do Aluno -->
-                    <section class="card" id="jornada-aluno">
-                        <h2>Minha Jornada</h2>
-                        <div class="faixa-info">
-                            <p><strong>Faixa Atual:</strong> <span id="faixa-atual-nome">--</span></p>
-                        </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" id="xp-bar" style="width: 0%;"></div>
-                        </div>
-                        <p class="progress-text"><span id="progresso-percentual">0%</span> completo para a próxima graduação</p>
-                    </section>
+    <div class="dashboard-grid-v2" style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-lg);">
 
-                    <!-- Seção do Currículo -->
-                    <section class="card" id="curriculo-interativo">
-                        <h2>Currículo da Faixa</h2>
-                        <div id="tecnicas-list-aluno">
-                            <!-- Técnicas carregadas aqui -->
-                        </div>
-                    </section>
+        <!-- Left Column -->
+        <div class="main-column">
+            <!-- Progress Section -->
+            <section class="card">
+                <h2>Minha Jornada</h2>
+                <div class="faixa-info"
+                    style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--spacing-md);">
+                    <p style="margin: 0; font-weight: 600;">Faixa Atual: <span id="faixa-atual-nome"
+                            style="color: var(--color-accent);">--</span></p>
+                    <span style="font-size: 0.875rem; color: var(--color-text-secondary);"><span
+                            id="progresso-percentual">0%</span> para a próxima</span>
                 </div>
-                <div class="side-column">
-                    <!-- Seção de Dados Pessoais -->
-                    <section class="card">
-                        <h2>Meu Perfil</h2>
-                        <div class="profile-header">
-                            <img src="https://via.placeholder.com/100" alt="Foto do Aluno" class="profile-pic" id="profile-pic-display">
-                        </div>
-                        <p><strong>Nome:</strong> <span id="display-fullname">--</span></p>
-                        <p><strong>Escola:</strong> <span id="display-escola">--</span></p>
-                        <p><strong>Email:</strong> <span id="display-email">--</span></p>
-                    </section>
-
-                    <!-- Seção de Conquistas -->
-                    <section class="card" id="conquistas-aluno">
-                        <h2>Minhas Conquistas</h2>
-                        <div class="badges-container" id="badges-container">
-                            <p>Nenhuma conquista ainda.</p>
-                        </div>
-                    </section>
-
-                    <!-- Seção de Inscrições -->
-                    <section class="card">
-                        <h2>Eventos e Inscrições</h2>
-                        <p>Você não está inscrito em nenhum evento.</p>
-                        <a href="eventos.html" class="btn">Ver Eventos</a>
-                    </section>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="xp-bar" style="width: 0%;"></div>
                 </div>
-            </div>
+            </section>
+
+            <!-- Curriculum Section -->
+            <section class="card" id="curriculo-interativo">
+                <h2>Currículo da Faixa</h2>
+                <div id="tecnicas-list-aluno">
+                    <!-- Técnicas carregadas aqui via JS -->
+                    <p style="color: var(--color-text-secondary); font-style: italic;">Carregando
+                        técnicas...</p>
+                </div>
+            </section>
         </div>
-    </main>
 
-    <!-- Seus Scripts -->
-    <script type="module" src="aluno.js"></script>
+        <!-- Right Column -->
+        <div class="side-column">
+            <!-- Profile Details -->
+            <section class="card">
+                <h2>Meu Perfil</h2>
+                <div style="margin-bottom: var(--spacing-md);">
+                    <p
+                        style="margin-bottom: var(--spacing-xs); color: var(--color-text-secondary); font-size: 0.875rem;">
+                        Escola</p>
+                    <p style="font-weight: 500;" id="display-escola">--</p>
+                </div>
+                <div>
+                    <p
+                        style="margin-bottom: var(--spacing-xs); color: var(--color-text-secondary); font-size: 0.875rem;">
+                        Email</p>
+                    <p style="font-weight: 500;" id="display-email">--</p>
+                </div>
+            </section>
+
+            <!-- Achievements -->
+            <section class="card" id="conquistas-aluno">
+                <h2>Conquistas</h2>
+                <div class="badges-container" id="badges-container"
+                    style="display: flex; gap: var(--spacing-sm); flex-wrap: wrap;">
+                    <p style="color: var(--color-text-secondary); font-size: 0.875rem;">Nenhuma conquista
+                        ainda.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Scripts -->
+        <script type="module" src="aluno.js"></script>
+        <script src="dashboard.js"></script>
 </body>
+
 </html>

@@ -1,75 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin Hyo - Hyo Taekwondo System</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
 </head>
+
 <body>
-    <header class="dashboard-header">
-        <div class="container">
-            <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo Association" class="logo">
-            <nav>
-                <span id="user-email"></span>
-                <a href="index.html" class="btn-logout">Sair</a>
-            </nav>
-        </div>
-    </header>
+    <!-- Mobile Menu Toggle -->
+    <button id="sidebar-toggle" class="mobile-menu-toggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
 
     <div class="dashboard-layout">
+        <!-- Sidebar -->
         <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo" class="logo">
+            </div>
             <nav class="sidebar-nav">
                 <ul>
-                    <li class="active"><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="#gerenciar-escolas">Gerenciar Escolas</a></li>
-                    <li><a href="#criar-admin">Criar Admin de Escola</a></li>
-                    <li><a href="#gerenciar-campeonatos">Gerenciar Campeonatos</a></li>
-                    <li><a href="#curriculo-mestre">Currículo</a></li>
-                    <li><a href="#ranking">Ranking</a></li>
+                    <li class="active"><a href="admin-hyo-dashboard.html">Visão Geral</a></li>
+                    <li><a href="#">Escolas</a></li>
+                    <li><a href="#">Alunos</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Financeiro</a></li>
+                    <li><a href="#">Configurações</a></li>
+                    <li><a href="index.html">Sair</a></li>
                 </ul>
             </nav>
         </aside>
+
+        <!-- Main Content -->
         <main class="dashboard-main-content">
             <div class="container">
-                <h1>Painel do Administrador Hyo</h1>
-                
-                <section class="card" id="dashboard">
-                    <h2>Métricas Gerais</h2>
-                    <div class="metrics-grid">
-                        <div class="metric-item">
-                            <h3>Total de Escolas</h3>
-                            <p id="total-escolas">--</p>
-                        </div>
-                        <div class="metric-item">
-                            <h3>Total de Alunos</h3>
-                            <p id="total-alunos">--</p>
-                        </div>
-                        <div class="metric-item">
-                            <h3>Faixas Pretas</h3>
-                            <p id="total-faixas-pretas">--</p>
-                        </div>
-                        <div class="metric-item">
-                            <h3>Eventos Ativos</h3>
-                            <p id="total-eventos">--</p>
-                        </div>
+                <header style="margin-bottom: var(--spacing-xl);">
+                    <h1 style="font-size: 1.875rem; font-weight: 700; color: var(--color-primary); margin: 0;">Painel
+                        Administrativo</h1>
+                    <p style="color: var(--color-text-secondary); margin-top: var(--spacing-xs);">Visão Geral do Sistema
+                    </p>
+                </header>
+
+                <!-- Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <h3>Total de Escolas</h3>
+                        <p id="total-escolas">--</p>
                     </div>
-                    <div class="chart-container" style="margin-top: 30px;">
+                    <div class="metric-item">
+                        <h3>Total de Alunos</h3>
+                        <p id="total-alunos">--</p>
+                    </div>
+                    <div class="metric-item">
+                        <h3>Faixas Pretas</h3>
+                        <p id="total-faixas-pretas">--</p>
+                    </div>
+                    <div class="metric-item">
+                        <h3>Eventos Ativos</h3>
+                        <p id="total-eventos">--</p>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <section class="card" style="margin-bottom: var(--spacing-lg);">
+                    <h2>Métricas de Crescimento</h2>
+                    <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
                         <canvas id="metrics-chart"></canvas>
                     </div>
                 </section>
 
+                <!-- Activity Feed -->
                 <section class="card" id="activity-feed">
                     <h2>Feed de Atividades Recentes</h2>
-                    <ul id="activity-feed-list">
+                    <ul id="activity-feed-list" style="padding-left: 0;">
                         <!-- Atividades serão carregadas aqui -->
                     </ul>
                 </section>
 
+                <!-- Hidden Sections (Toggled via JS) -->
                 <section class="card" id="gerenciar-escolas" style="display:none;">
-                    <h2>Gerenciar Escolas</h2>
-                    <button id="add-escola-btn" class="btn btn-primary">Adicionar Nova Escola</button>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                        <h2 style="margin: 0; border: none;">Gerenciar Escolas</h2>
+                        <button id="add-escola-btn" class="btn btn-primary">Adicionar Nova Escola</button>
+                    </div>
                     <div class="table-responsive">
                         <table id="escolas-table">
                             <thead>
@@ -85,46 +108,36 @@
                             </tbody>
                         </table>
                     </div>
-                </section>
-
-                <section class="card" id="criar-admin" style="display:none;">
-                    <h2>Criar Conta de Administrador de Escola</h2>
-                    <form id="create-admin-escola-form">
-                        <div class="input-group">
-                            <label for="admin-email">Email do Admin</label>
-                            <input type="email" id="admin-email" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="admin-password">Senha Provisória</label>
-                            <input type="password" id="admin-password" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="escola-assoc">Associar à Escola</label>
-                            <select id="escola-assoc" required>
-                                <option value="">Selecione uma escola</option>
-                                <!-- Escolas carregadas por JS -->
-                            </select>
-                        </div>
-                        <button type="submit" class="btn">Criar Administrador</button>
+                    <div class="input-group">
+                        <label for="escola-assoc">Associar à Escola</label>
+                        <select id="escola-assoc" required>
+                            <option value="">Selecione uma escola</option>
+                            <!-- Escolas carregadas por JS -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Criar Administrador</button>
                     </form>
                 </section>
 
                 <section class="card" id="gerenciar-campeonatos" style="display:none;">
                     <h2>Gerenciar Campeonatos</h2>
-                    <form id="create-championship-form">
-                        <h3>Criar Novo Campeonato</h3>
-                        <div class="input-group">
-                            <label for="championship-name">Nome do Campeonato</label>
-                            <input type="text" id="championship-name" required>
+                    <form id="create-championship-form" style="margin-bottom: var(--spacing-xl);">
+                        <h3 style="font-size: 1rem; margin-bottom: var(--spacing-md);">Criar Novo Campeonato</h3>
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr auto; gap: var(--spacing-md); align-items: end;">
+                            <div class="input-group" style="margin-bottom: 0;">
+                                <label for="championship-name">Nome do Campeonato</label>
+                                <input type="text" id="championship-name" required>
+                            </div>
+                            <div class="input-group" style="margin-bottom: 0;">
+                                <label for="championship-date">Data</label>
+                                <input type="date" id="championship-date" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="height: 42px;">Criar</button>
                         </div>
-                        <div class="input-group">
-                            <label for="championship-date">Data</label>
-                            <input type="date" id="championship-date" required>
-                        </div>
-                        <button type="submit" class="btn">Criar Campeonato</button>
                     </form>
-                    <hr style="margin: 20px 0;">
-                    <h3>Campeonatos Existentes</h3>
+                    <hr style="margin: var(--spacing-lg) 0; border: 0; border-top: 1px solid var(--border-color);">
+                    <h3 style="font-size: 1rem; margin-bottom: var(--spacing-md);">Campeonatos Existentes</h3>
                     <div class="table-responsive">
                         <table id="championships-table">
                             <thead>
@@ -150,30 +163,34 @@
                         </select>
                     </div>
                     <div id="curriculo-editor">
-                        <h3>Técnicas para a Faixa Selecionada</h3>
-                        <div id="tecnicas-list">
+                        <h3 style="font-size: 1rem; margin-top: var(--spacing-lg);">Técnicas para a Faixa Selecionada
+                        </h3>
+                        <div id="tecnicas-list" style="margin-bottom: var(--spacing-md);">
                             <!-- Lista de técnicas carregada aqui -->
                         </div>
-                        <div class="input-group">
-                            <input type="text" id="nova-tecnica-input" placeholder="Nome da nova técnica">
-                            <button id="add-tecnica-btn" class="btn">Adicionar Técnica</button>
+                        <div class="input-group" style="display: flex; gap: var(--spacing-sm);">
+                            <input type="text" id="nova-tecnica-input" placeholder="Nome da nova técnica"
+                                style="flex: 1;">
+                            <button id="add-tecnica-btn" class="btn btn-secondary">Adicionar</button>
                         </div>
-                        <hr>
-                        <button id="salvar-curriculo-btn" class="btn btn-primary">Salvar Alterações no Currículo</button>
+                        <hr style="margin: var(--spacing-lg) 0; border: 0; border-top: 1px solid var(--border-color);">
+                        <button id="salvar-curriculo-btn" class="btn btn-primary">Salvar Alterações no
+                            Currículo</button>
                     </div>
                 </section>
 
                 <section class="card" id="ranking" style="display:none;">
                     <h2>Rankings Oficiais</h2>
-                    <div class="filters-form">
-                        <div class="input-group">
+                    <div class="filters-form"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-bottom: var(--spacing-lg);">
+                        <div class="input-group" style="margin-bottom: 0;">
                             <label for="ano">Ano</label>
                             <select id="ano">
                                 <option>2025</option>
                                 <option>2024</option>
                             </select>
                         </div>
-                        <div class="input-group">
+                        <div class="input-group" style="margin-bottom: 0;">
                             <label for="torneio-tipo">Tipo de Torneio</label>
                             <select id="torneio-tipo">
                                 <option>Todos</option>
@@ -181,7 +198,7 @@
                                 <option>Nacional</option>
                             </select>
                         </div>
-                         <div class="input-group">
+                        <div class="input-group" style="margin-bottom: 0;">
                             <label for="categoria-rank">Categoria</label>
                             <select id="categoria-rank">
                                 <option>Todas</option>
@@ -221,10 +238,6 @@
         </main>
     </div>
 
-    <!-- Seus Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="admin-hyo.js"></script>
-
     <!-- Modal de Edição de Escola -->
     <div id="edit-escola-modal" class="modal" style="display:none;">
         <div class="modal-content">
@@ -247,7 +260,7 @@
                         <!-- Admins serão carregados aqui -->
                     </select>
                 </div>
-                <button type="submit" class="btn">Salvar Alterações</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Alterações</button>
             </form>
         </div>
     </div>
@@ -267,9 +280,15 @@
                     <label for="edit-championship-date">Data</label>
                     <input type="date" id="edit-championship-date" required>
                 </div>
-                <button type="submit" class="btn">Salvar Alterações</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Alterações</button>
             </form>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="admin-hyo.js"></script>
+    <script src="dashboard.js"></script>
 </body>
+
 </html>
