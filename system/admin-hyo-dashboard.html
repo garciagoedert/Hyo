@@ -15,42 +15,168 @@
 <body>
     <!-- Mobile Menu Toggle -->
     <button id="sidebar-toggle" class="mobile-menu-toggle">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
     </button>
 
     <div class="dashboard-layout">
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo" class="logo">
+                <button id="sidebar-collapse-btn" class="icon-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
             </div>
+
             <nav class="sidebar-nav">
                 <ul>
-                    <li class="active"><a href="admin-hyo-dashboard.html">Visão Geral</a></li>
-                    <li><a href="#">Escolas</a></li>
-                    <li><a href="#">Alunos</a></li>
-                    <li><a href="#">Eventos</a></li>
-                    <li><a href="#">Financeiro</a></li>
-                    <li><a href="#">Configurações</a></li>
-                    <li><a href="index.html">Sair</a></li>
+                    <li class="active">
+                        <a href="#admin-hyo-dashboard.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                            <span class="text">Visão Geral</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gerenciar-escolas">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M3 21h18" />
+                                <path d="M5 21V7l8-4 8 4v14" />
+                                <path d="M17 21v-8H7v8" />
+                            </svg>
+                            <span class="text">Gerenciar Escolas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gerenciar-alunos">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                            <span class="text">Gerenciar Usuários</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gerenciar-campeonatos">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                                <path d="M4 22h16" />
+                                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+                                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+                                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+                            </svg>
+                            <span class="text">Gerenciar Campeonatos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gerenciar-curriculo">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                            </svg>
+                            <span class="text">Gerenciar Currículo</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ranking-geral">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M6 9v12h4V9H6z" />
+                                <path d="M14 3v18h4V3h-4z" />
+                                <path d="M22 15v6h-4v-6h4z" />
+                                <path d="M2 15v6h4v-6H2z" />
+                            </svg>
+                            <span class="text">Ranking Geral</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#modulo-financeiro">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                            <span class="text">Módulo Financeiro</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#configuracoes">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3" />
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                            </svg>
+                            <span class="text">Configurações</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
+            <div class="sidebar-footer">
+                <a href="#perfil" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    <span class="text">Perfil</span>
+                </a>
+                <a href="#" class="sidebar-link btn-logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                    <span class="text">Sair</span>
+                </a>
+            </div>
         </aside>
 
         <!-- Main Content -->
         <main class="dashboard-main-content">
-            <div class="container">
-                <header style="margin-bottom: var(--spacing-xl);">
-                    <h1 style="font-size: 1.875rem; font-weight: 700; color: var(--color-primary); margin: 0;">Painel
-                        Administrativo</h1>
-                    <p style="color: var(--color-text-secondary); margin-top: var(--spacing-xs);">Visão Geral do Sistema
-                    </p>
-                </header>
+            <header class="dashboard-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl);">
+                <div>
+                    <h1 style="margin: 0; font-size: 1.5rem; color: var(--color-primary);">Bem-vindo, Admin Hyo</h1>
+                    <p style="margin: 0; color: var(--color-text-secondary);" id="user-email">Carregando...</p>
+                </div>
+                <div class="header-actions">
+                    <!-- Add header actions if needed -->
+                </div>
+            </header>
 
-                <!-- Metrics Grid -->
+            <div class="container">
+                <!-- Visão Geral Section -->
                 <div class="metrics-grid">
                     <div class="metric-item">
                         <h3>Total de Escolas</h3>
@@ -70,74 +196,113 @@
                     </div>
                 </div>
 
-                <!-- Charts Section -->
-                <section class="card" style="margin-bottom: var(--spacing-lg);">
-                    <h2>Métricas de Crescimento</h2>
-                    <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
+                <section class="card" id="charts-section">
+                    <h2>Crescimento da Rede</h2>
+                    <div style="height: 300px;">
                         <canvas id="metrics-chart"></canvas>
                     </div>
                 </section>
 
-                <!-- Activity Feed -->
                 <section class="card" id="activity-feed">
-                    <h2>Feed de Atividades Recentes</h2>
-                    <ul id="activity-feed-list" style="padding-left: 0;">
-                        <!-- Atividades serão carregadas aqui -->
+                    <h2>Atividades Recentes</h2>
+                    <ul id="activity-feed-list" style="list-style: none; padding: 0;">
+                        <!-- Activity items loaded via JS -->
+                        <li>Carregando atividades...</li>
                     </ul>
                 </section>
 
-                <!-- Hidden Sections (Toggled via JS) -->
+                <!-- Gerenciar Escolas Section -->
                 <section class="card" id="gerenciar-escolas" style="display:none;">
                     <div
                         style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
-                        <h2 style="margin: 0; border: none;">Gerenciar Escolas</h2>
-                        <button id="add-escola-btn" class="btn btn-primary">Adicionar Nova Escola</button>
+                        <h2 style="margin: 0; border: none;">Escolas Cadastradas</h2>
+                        <button id="add-escola-btn" class="btn btn-primary">Adicionar Escola</button>
                     </div>
                     <div class="table-responsive">
                         <table id="escolas-table">
                             <thead>
                                 <tr>
-                                    <th>Nome da Escola</th>
+                                    <th>Nome</th>
                                     <th>Cidade</th>
                                     <th>Admin Responsável</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Conteúdo preenchido por JS -->
+                                <!-- Escolas loaded via JS -->
                             </tbody>
                         </table>
                     </div>
-                    <div class="input-group">
-                        <label for="escola-assoc">Associar à Escola</label>
-                        <select id="escola-assoc" required>
-                            <option value="">Selecione uma escola</option>
-                            <!-- Escolas carregadas por JS -->
-                        </select>
+
+                    <div
+                        style="margin-top: var(--spacing-xl); padding-top: var(--spacing-lg); border-top: 1px solid var(--border-color);">
+                        <h3>Criar Novo Admin de Escola</h3>
+                        <form id="create-admin-form" style="max-width: 500px;">
+                            <div class="input-group">
+                                <label for="escola-assoc">Associar à Escola (ID)</label>
+                                <input type="text" id="escola-assoc" required placeholder="Cole o ID da escola aqui">
+                            </div>
+                            <div class="input-group">
+                                <label for="admin-email">Email do Admin</label>
+                                <input type="email" id="admin-email" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="admin-password">Senha Inicial</label>
+                                <input type="password" id="admin-password" required>
+                            </div>
+                            <button type="submit" class="btn btn-secondary">Criar Admin</button>
+                        </form>
                     </div>
-                    <button type="submit" class="btn btn-primary">Criar Administrador</button>
-                    </form>
                 </section>
 
+                <!-- Gerenciar Alunos (Global Users) Section -->
+                <section class="card" id="gerenciar-alunos" style="display:none;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                        <h2 style="margin: 0; border: none;">Todos os Usuários</h2>
+                        <!-- Filter inputs could go here -->
+                    </div>
+                    <div class="table-responsive">
+                        <table id="global-users-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Tipo</th>
+                                    <th>Escola</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Users loaded via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Gerenciar Campeonatos Section -->
                 <section class="card" id="gerenciar-campeonatos" style="display:none;">
-                    <h2>Gerenciar Campeonatos</h2>
-                    <form id="create-championship-form" style="margin-bottom: var(--spacing-xl);">
-                        <h3 style="font-size: 1rem; margin-bottom: var(--spacing-md);">Criar Novo Campeonato</h3>
-                        <div
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                        <h2 style="margin: 0; border: none;">Campeonatos</h2>
+                    </div>
+
+                    <div style="margin-bottom: var(--spacing-xl);">
+                        <h3>Criar Novo Campeonato</h3>
+                        <form id="create-championship-form"
                             style="display: grid; grid-template-columns: 1fr 1fr auto; gap: var(--spacing-md); align-items: end;">
                             <div class="input-group" style="margin-bottom: 0;">
-                                <label for="championship-name">Nome do Campeonato</label>
+                                <label for="championship-name">Nome do Evento</label>
                                 <input type="text" id="championship-name" required>
                             </div>
                             <div class="input-group" style="margin-bottom: 0;">
                                 <label for="championship-date">Data</label>
                                 <input type="date" id="championship-date" required>
                             </div>
-                            <button type="submit" class="btn btn-primary" style="height: 42px;">Criar</button>
-                        </div>
-                    </form>
-                    <hr style="margin: var(--spacing-lg) 0; border: 0; border-top: 1px solid var(--border-color);">
-                    <h3 style="font-size: 1rem; margin-bottom: var(--spacing-md);">Campeonatos Existentes</h3>
+                            <button type="submit" class="btn btn-primary">Criar</button>
+                        </form>
+                    </div>
+
                     <div class="table-responsive">
                         <table id="championships-table">
                             <thead>
@@ -148,97 +313,92 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Conteúdo preenchido por JS -->
+                                <!-- Championships loaded via JS -->
                             </tbody>
                         </table>
                     </div>
                 </section>
 
-                <section class="card" id="curriculo-mestre" style="display:none;">
-                    <h2>Gestão de Currículo</h2>
-                    <div class="input-group">
-                        <label for="faixa-select">Selecione a Faixa para Editar</label>
-                        <select id="faixa-select">
-                            <!-- Opções de faixa carregadas via JS -->
-                        </select>
-                    </div>
-                    <div id="curriculo-editor">
-                        <h3 style="font-size: 1rem; margin-top: var(--spacing-lg);">Técnicas para a Faixa Selecionada
-                        </h3>
-                        <div id="tecnicas-list" style="margin-bottom: var(--spacing-md);">
-                            <!-- Lista de técnicas carregada aqui -->
+                <!-- Gerenciar Currículo Section -->
+                <section class="card" id="gerenciar-curriculo" style="display:none;">
+                    <h2 style="margin-bottom: var(--spacing-lg);">Currículo Mestre</h2>
+                    <div style="display: grid; grid-template-columns: 250px 1fr; gap: var(--spacing-xl);">
+                        <div>
+                            <div class="input-group">
+                                <label for="faixa-select">Selecione a Faixa</label>
+                                <select id="faixa-select">
+                                    <!-- Options loaded via JS -->
+                                </select>
+                            </div>
+                            <button id="salvar-curriculo-btn" class="btn btn-primary" style="width: 100%;">Salvar
+                                Alterações</button>
                         </div>
-                        <div class="input-group" style="display: flex; gap: var(--spacing-sm);">
-                            <input type="text" id="nova-tecnica-input" placeholder="Nome da nova técnica"
-                                style="flex: 1;">
-                            <button id="add-tecnica-btn" class="btn btn-secondary">Adicionar</button>
+                        <div>
+                            <h3>Técnicas Exigidas</h3>
+                            <div style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                                <input type="text" id="nova-tecnica-input" placeholder="Digite uma nova técnica..."
+                                    style="flex: 1; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                                <button id="add-tecnica-btn" class="btn btn-secondary">Adicionar</button>
+                            </div>
+                            <div id="tecnicas-list"
+                                style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                                <!-- Techniques loaded via JS -->
+                            </div>
                         </div>
-                        <hr style="margin: var(--spacing-lg) 0; border: 0; border-top: 1px solid var(--border-color);">
-                        <button id="salvar-curriculo-btn" class="btn btn-primary">Salvar Alterações no
-                            Currículo</button>
                     </div>
                 </section>
 
-                <section class="card" id="ranking" style="display:none;">
-                    <h2>Rankings Oficiais</h2>
-                    <div class="filters-form"
-                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-bottom: var(--spacing-lg);">
-                        <div class="input-group" style="margin-bottom: 0;">
-                            <label for="ano">Ano</label>
-                            <select id="ano">
-                                <option>2025</option>
-                                <option>2024</option>
-                            </select>
-                        </div>
-                        <div class="input-group" style="margin-bottom: 0;">
-                            <label for="torneio-tipo">Tipo de Torneio</label>
-                            <select id="torneio-tipo">
-                                <option>Todos</option>
-                                <option>Estadual</option>
-                                <option>Nacional</option>
-                            </select>
-                        </div>
-                        <div class="input-group" style="margin-bottom: 0;">
-                            <label for="categoria-rank">Categoria</label>
-                            <select id="categoria-rank">
-                                <option>Todas</option>
-                                <option>Adulto Masculino</option>
-                                <option>Infantil Feminino</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Pos.</th>
-                                    <th>Atleta</th>
-                                    <th>Escola</th>
-                                    <th>Pontos</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1º</td>
-                                    <td>Nome do Aluno Campeão</td>
-                                    <td>Academia Tigre Branco</td>
-                                    <td>150</td>
-                                </tr>
-                                <tr>
-                                    <td>2º</td>
-                                    <td>Segundo Lugar Aluno</td>
-                                    <td>Academia Dragão do Mar</td>
-                                    <td>120</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <!-- Ranking Geral Section -->
+                <section class="card" id="ranking-geral" style="display:none;">
+                    <h2>Ranking Geral</h2>
+                    <p>O sistema de ranking está em desenvolvimento. Em breve você poderá visualizar os
+                        melhores atletas
+                        de todas as escolas aqui.</p>
                 </section>
+
+                <!-- Módulo Financeiro Section -->
+                <section class="card" id="modulo-financeiro" style="display:none;">
+                    <h2>Financeiro</h2>
+                    <p>Visão geral das mensalidades e pagamentos de todas as escolas.</p>
+                    <!-- Placeholder for financial data -->
+                </section>
+
+                <!-- Configurações Section -->
+                <section class="card" id="configuracoes" style="display:none;">
+                    <h2>Configurações do Sistema</h2>
+                    <p>Ajustes globais do sistema Hyo.</p>
+                </section>
+
+                <!-- Perfil Admin Section -->
+                <section class="card" id="perfil" style="display:none;">
+                    <h2>Meu Perfil</h2>
+                    <div class="profile-header">
+                        <img src="../imgs/default-avatar.png" alt="Profile Picture" class="profile-pic">
+                    </div>
+                    <form id="profile-form" style="max-width: 500px; margin: 0 auto;">
+                        <div class="input-group">
+                            <label for="profile-name">Nome Completo</label>
+                            <input type="text" id="profile-name" value="Admin Hyo">
+                        </div>
+                        <div class="input-group">
+                            <label for="profile-email">Email</label>
+                            <input type="email" id="profile-email" value="admin@hyo.com" disabled>
+                        </div>
+                        <div class="input-group">
+                            <label for="profile-password">Nova Senha</label>
+                            <input type="password" id="profile-password"
+                                placeholder="Deixe em branco para manter a atual">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar
+                            Alterações</button>
+                    </form>
+                </section>
+
             </div>
         </main>
     </div>
 
-    <!-- Modal de Edição de Escola -->
+    <!-- Modals -->
     <div id="edit-escola-modal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close-button">&times;</span>
@@ -265,7 +425,6 @@
         </div>
     </div>
 
-    <!-- Modal de Edição de Campeonato -->
     <div id="edit-championship-modal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close-button">&times;</span>
@@ -287,7 +446,7 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="admin-hyo.js"></script>
+    <script type="module" src="admin-hyo.js?v=2"></script>
     <script src="dashboard.js"></script>
 </body>
 

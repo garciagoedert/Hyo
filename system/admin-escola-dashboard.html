@@ -4,62 +4,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin Escola - Hyo Taekwondo</title>
+    <title>Dashboard Admin Escola - Hyo Taekwondo System</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../imgs/favicon.svg" type="image/svg+xml">
 </head>
-<p style="color: var(--color-text-secondary); margin-top: var(--spacing-xs);">Academia Tigre Branco
-</p>
-</header>
 
-<!-- Metrics Grid -->
-<div class="metrics-grid">
-    <div class="metric-item">
-        <h3>Total de Alunos</h3>
-        <p>50</p>
-    </div>
-    <div class="metric-item">
-        <h3>Alunos Ativos</h3>
-        <p>45</p>
-    </div>
-    <div class="metric-item">
-        <h3>Professores</h3>
-        <p>5</p>
-    </div>
-    <div class="metric-item">
-        <h3>Próximo Evento</h3>
-        <p style="font-size: 1.25rem;">Copa Hyo - 20/10</p>
-    </div>
-</div>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button id="sidebar-toggle" class="mobile-menu-toggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
 
-<div class="dashboard-grid-v2" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg);">
-    <!-- Management Section -->
-    <section class="card">
-        <h2>Gerenciar Membros</h2>
-        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg);">Adicione novos
-            membros à sua equipe e corpo discente.</p>
-        <div class="actions-container" style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
-            <button id="add-professor-btn" class="btn btn-primary">Adicionar Professor</button>
-            <button id="add-aluno-btn" class="btn btn-secondary">Adicionar Aluno</button>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../imgs/hyo-horizontal-logo.svg" alt="Hyo Taekwondo" class="logo">
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="admin-escola-dashboard.html">Visão Geral</a></li>
+                    <li><a href="#">Alunos</a></li>
+                    <li><a href="#">Professores</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Financeiro</a></li>
+                    <li><a href="#">Configurações</a></li>
+                    <li><a href="index.html" class="btn-logout">Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main-content">
+            <div class="container">
+                <header style="margin-bottom: var(--spacing-xl);">
+                    <h1 style="font-size: 1.875rem; font-weight: 700; color: var(--color-primary); margin: 0;">Painel
+                        Admin Escola</h1>
+                    <p style="color: var(--color-text-secondary); margin-top: var(--spacing-xs);">Academia Tigre Branco
+                    </p>
+                </header>
+
+                <!-- Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <h3>Total de Alunos</h3>
+                        <p>50</p>
+                    </div>
+                    <div class="metric-item">
+                        <h3>Alunos Ativos</h3>
+                        <p>45</p>
+                    </div>
+                    <div class="metric-item">
+                        <h3>Professores</h3>
+                        <p>5</p>
+                    </div>
+                    <div class="metric-item">
+                        <h3>Próximo Evento</h3>
+                        <p style="font-size: 1.25rem;">Copa Hyo - 20/10</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid-v2"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg);">
+                    <!-- Management Section -->
+                    <section class="card" id="gerenciar-professores">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                            <h2 style="margin: 0; border: none;">Professores</h2>
+                            <button id="add-professor-btn" class="btn btn-primary">Adicionar Professor</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="professores-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Email</th>
+                                        <th>Faixa</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Professores loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="card" id="gerenciar-alunos">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                            <h2 style="margin: 0; border: none;">Alunos</h2>
+                            <button id="add-aluno-btn" class="btn btn-secondary">Adicionar Aluno</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="alunos-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Email</th>
+                                        <th>Faixa</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Alunos loaded via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Adicionar Professor -->
+    <div id="add-professor-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Adicionar Novo Professor</h2>
+            <form id="add-professor-form">
+                <div class="input-group">
+                    <label for="prof-nome">Nome Completo</label>
+                    <input type="text" id="prof-nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="prof-email">Email</label>
+                    <input type="email" id="prof-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="prof-password">Senha Inicial</label>
+                    <input type="password" id="prof-password" required>
+                </div>
+                <div class="input-group">
+                    <label for="prof-faixa">Faixa</label>
+                    <select id="prof-faixa" required>
+                        <option value="preta">Preta</option>
+                        <option value="vermelha">Vermelha</option>
+                        <option value="azul">Azul</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Cadastrar Professor</button>
+            </form>
         </div>
-    </section>
+    </div>
 
-    <!-- Events Section -->
-    <section class="card">
-        <h2>Gerenciar Eventos</h2>
-        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg);">Organize
-            campeonatos, graduações e seminários.</p>
-        <button id="add-evento-btn" class="btn btn-primary">Adicionar Novo Evento</button>
-    </section>
-</div>
-</div>
-</main>
-</div>
+    <!-- Modal Adicionar Aluno -->
+    <div id="add-aluno-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Adicionar Novo Aluno</h2>
+            <form id="add-aluno-form">
+                <div class="input-group">
+                    <label for="aluno-nome">Nome Completo</label>
+                    <input type="text" id="aluno-nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="aluno-email">Email</label>
+                    <input type="email" id="aluno-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="aluno-password">Senha Inicial</label>
+                    <input type="password" id="aluno-password" required>
+                </div>
+                <div class="input-group">
+                    <label for="aluno-faixa">Faixa Atual</label>
+                    <select id="aluno-faixa" required>
+                        <option value="branca">Branca</option>
+                        <option value="ponta-amarela">Ponta Amarela</option>
+                        <option value="amarela">Amarela</option>
+                        <option value="ponta-verde">Ponta Verde</option>
+                        <option value="verde">Verde</option>
+                        <option value="ponta-azul">Ponta Azul</option>
+                        <option value="azul">Azul</option>
+                        <option value="ponta-vermelha">Ponta Vermelha</option>
+                        <option value="vermelha">Vermelha</option>
+                        <option value="ponta-preta">Ponta Preta</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary" style="width: 100%;">Cadastrar Aluno</button>
+            </form>
+        </div>
+    </div>
 
-<script src="dashboard.js"></script>
+    <script type="module" src="admin-escola.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 
 </html>

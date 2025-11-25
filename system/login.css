@@ -1,0 +1,137 @@
+/* =========================================
+   Login Page Styles
+   ========================================= */
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-body);
+    padding: var(--spacing-md);
+}
+
+.login-card {
+    background: var(--color-bg-surface);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--border-color);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.login-header .logo {
+    height: 48px;
+    margin-bottom: var(--spacing-md);
+}
+
+.login-header h2 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.login-header .subtitle {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: var(--spacing-md);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    padding-left: 2.75rem;
+    /* Space for icon */
+    padding-right: 2.75rem;
+    /* Space for toggle */
+}
+
+.password-toggle {
+    position: absolute;
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: var(--color-primary);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.btn-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: 0.75rem;
+    font-size: 1rem;
+    margin-top: var(--spacing-lg);
+}
+
+/* Error Message Styles */
+.error-message {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 0.875rem;
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
